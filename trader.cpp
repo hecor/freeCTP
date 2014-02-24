@@ -4,6 +4,8 @@
 #include <sstream>
 #include "trader.h"
 
+int Trader::m_sOrderRef = 0;
+
 void Trader::init()
 {
 	m_pTradeApi->RegisterSpi(this);
@@ -57,7 +59,9 @@ void Trader::trade(std::string stockID, std::string exchangeID, std::string limi
 	pIptOrdFld->VolumeCondition = THOST_FTDC_VC_AV;
 	pIptOrdFld->ContingentCondition = THOST_FTDC_CC_Immediately;
 	pIptOrdFld->ForceCloseReason = THOST_FTDC_FCC_NotForceClose;
-	strcpy(pIptOrdFld->OrderRef,"1");
+	char buffer[10];
+	sprintf(buffer, "%d", m_sOrderRef++);
+	strcpy(pIptOrdFld->OrderRef, buffer);
 //		strcpy(pIptOrdFld->UserID,"698048");
 //		pIptOrdFld->CombOffsetFlag[0]=THOST_FTDC_OF_Open;
 //		pIptOrdFld->CombHedgeFlag[0]=THOST_FTDC_HF_Speculation;
@@ -72,9 +76,9 @@ void Trader::trade(std::string stockID, std::string exchangeID, std::string limi
 
 void Trader::OnRspOrderInsert(CZQThostFtdcInputOrderField *pInputOrder,CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
 	// 输出报单录入结果
-	std::cout << "OnRspOrderInsert: inputorder.VolumeCondition: " << pInputOrder->VolumeCondition << std::endl;
-	std::cout << "OnRspOrderInsert: inputorder.TimeCondition: " << pInputOrder->TimeCondition << std::endl;
-	std::cout << "OnRspOrderInsert: inputorder.ForceCloseReason: " << pInputOrder->ForceCloseReason << std::endl;
+//	std::cout << "OnRspOrderInsert: inputorder.VolumeCondition: " << pInputOrder->VolumeCondition << std::endl;
+//	std::cout << "OnRspOrderInsert: inputorder.TimeCondition: " << pInputOrder->TimeCondition << std::endl;
+//	std::cout << "OnRspOrderInsert: inputorder.ForceCloseReason: " << pInputOrder->ForceCloseReason << std::endl;
 	std::cout << "OnRspOrderInsert: ErrorCode=" << pRspInfo->ErrorID << ", ErrorMsg=" << pRspInfo->ErrorMsg;
 }
 

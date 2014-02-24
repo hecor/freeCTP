@@ -9,6 +9,7 @@ Install:
 * export LD_LIBRARY_PATH="$HOME/programs/lib/python2.7/site-packages/pzyctp:$LD_LIBRARY_PATH"
 
 **Remember to change to PYTHON library path in scripts and export command**
+
 **Remember to create two dirs in /tmp before you run pzyctp. (/tmp/CTP_L2data/ and /tmp/CTP_tradedata/)**
 
 

@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include "./api/ThostFtdcTraderApiSSE.h"
+#include "./api/ThostFtdcUserApiDataTypeSSE.h"
 
 class Trader : public CZQThostFtdcTraderSpi
 {
@@ -20,6 +21,8 @@ public:
 		this->ExchangeIDDict["sz"] = "SZE";
 		this->ExchangeIDDict_Reverse["SSE"] = "sh";
 		this->ExchangeIDDict_Reverse["SZE"] = "sz";
+		m_pTradeApi->SubscribePrivateTopic(ZQTHOST_TERT_RESUME);
+		m_pTradeApi->SubscribePublicTopic(ZQTHOST_TERT_RESUME);
 	}
 	
 	~Trader(){
@@ -35,6 +38,7 @@ public:
 	void takeout_fund(int amount);
 
 private:
+	static int m_sOrderRef;
 	CZQThostFtdcTraderApi *m_pTradeApi;
 	std::string brokerID;
 	std::string userID;
