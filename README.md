@@ -5,19 +5,26 @@ my python wrapper for CTP
 
 Install:
 ========
-* run ./wrap.sh and then ./setup.sh
-* export LD_LIBRARY_PATH="$HOME/programs/lib/python2.7/site-packages/pzyctp:$LD_LIBRARY_PATH"
+* run stock/wrap.sh and future/wrap.sh then ./setup.sh
+* export LD_LIBRARY_PATH="$HOME/programs/lib/python2.7/site-packages/pzyctp/stock:$HOME/programs/lib/python2.7/site-packages/pzyctp/future:$LD_LIBRARY_PATH"
 
 **Remember to change to PYTHON library path in scripts and export command**
 
-**Remember to create two dirs in /tmp before you run pzyctp. (/tmp/CTP_L2data/ and /tmp/CTP_tradedata/)**
+**Remember to create two dirs in /tmp before you run pzyctp.**
+* if you use ctp for stock: (/tmp/CTP_L2data/ and /tmp/CTP_tradedata/)
+* if you use ctp for future: (/tmp/CTP_future_data/ and /tmp/CTP_future_trade)
 
 
-The format of L2 market data:
+Format of market data:
 =============================
-cout << stockid << ',' << p->OpenPx << ',' << p->PreClosePx << ',' << p->LastPx << ',' << p->HighPx << ',' << p->LowPx << ',' 
-<< p->TotalVolumeTrade << ',' << p->TotalValueTrade << ',' 
-<< p->BidPx1 << ',' << p->BidOrderQty1 << ',' << p->BidPx2 << ',' << p->BidOrderQty2 << ',' << p->BidPx3 << ',' << p->BidOrderQty3 << ',' 
-<< p->OfferPx1 << ',' << p->OfferOrderQty1 << ',' << p->OfferPx2 << ',' << p->OfferOrderQty2 << ',' << p->OfferPx3 << ',' << p->OfferOrderQty3 << ',' 
-<< p->TradingDay << ',' << p->DataTimeStamp;
+* Stock:  
+	
+	stockid,OpenPx,PreClosePx,LastPx,HighPx,LowPx,TotalVolumeTrade,TotalValueTrade,BidPx1,BidOrderQty1,BidPx2,BidOrderQty2,BidPx3,BidOrderQty3,OfferPx1,OfferOrderQty1,OfferPx2,OfferOrderQty2,OfferPx3,OfferOrderQty3,TradingDay,DataTimeStamp
 
+* Future:
+
+	InstrumentID,TradingDay,UpdateTime,LastPrice,PreClosePrice,OpenPrice,ClosePrice,HighestPrice,LowestPrice,Volume,Turnover,BidPrice1,BidVolume1,BidPrice2,BidVolume2,BidPrice3,BidVolume3,AskPrice1,AskVolume1,AskPrice2,AskVolume2,AskPrice3,AskVolume3
+
+Error Code for ctp
+==================
+* OnRspOrderInsert: ErrorCode=15, 报单字段有误
