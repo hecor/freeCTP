@@ -7,10 +7,12 @@
 #include "./api/ThostFtdcTraderApiSSE.h"
 #include "./api/ThostFtdcUserApiDataTypeSSE.h"
 
+using namespace std;
+
 class Trader : public CZQThostFtdcTraderSpi
 {
 public:
-	Trader(std::string front_address, std::string brokerID, std::string userID, std::string passwd){
+	Trader(string front_address, string brokerID, string userID, string passwd){
 		this->front_address = front_address;
 		this->brokerID = brokerID;
 		this->userID = userID;
@@ -29,29 +31,34 @@ public:
 		m_pTradeApi->Release();
 	}
 
-	void buy(std::string stockid, std::string limit_price, int amount);
-	void sell(std::string stockid, std::string limit_price, int amount);
+	void buy(string stockid, string limit_price, int amount);
+	void sell(string stockid, string limit_price, int amount);
 	void update_stock_info();
-	std::map< std::string, int > get_stock_info();
+	map< string, int > get_stock_info();
 	void update_trade_records();
-	std::vector< std::string > get_trade_records();
+	vector< string > get_trade_records();
 	void takeout_fund(int amount);
 
+	bool IsErrorRspInfo(CZQThostFtdcRspInfoField *pRspInfo);
+	string get_error_msg(){ return error_msg; }
+
 private:
+	static int m_sRequestID;
 	static int m_sOrderRef;
 	CZQThostFtdcTraderApi *m_pTradeApi;
-	std::string brokerID;
-	std::string userID;
-	std::string passwd;
-	std::string front_address;
-	std::map< std::string, std::string > ExchangeIDDict;
-	std::map< std::string, std::string > ExchangeIDDict_Reverse;
-	std::map< std::string, int > stock_info;
-	std::vector< std::string > trade_records;
+	string brokerID;
+	string userID;
+	string passwd;
+	string front_address;
+	map< string, string > ExchangeIDDict;
+	map< string, string > ExchangeIDDict_Reverse;
+	map< string, int > stock_info;
+	vector< string > trade_records;
+	string error_msg;
 
 	void init();
 	void OnFrontConnected();
-	void trade(std::string stockID, std::string exchangeID, std::string limit_price, int amount, TZQThostFtdcDirectionType direction);
+	void trade(string stockID, string exchangeID, string limit_price, int amount, TZQThostFtdcDirectionType direction);
 
 	void OnRtnOrder(CZQThostFtdcOrderField *pOrder);
 	void OnRspError(CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);

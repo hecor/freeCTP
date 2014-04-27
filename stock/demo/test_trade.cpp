@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cstdio>
 #include <unistd.h>
-#include "ThostFtdcTraderApiSSE.h"
+#include "../api/ThostFtdcTraderApiSSE.h"
 
 using namespace std;
 
@@ -10,10 +10,18 @@ class TestTrader : public CZQThostFtdcTraderSpi
 {
 private:
 	CZQThostFtdcTraderApi* m_pTradeApi;
+	string BrokerID;
+	string UserID;
+	string Password;
+	string FrontAddress;
 
 public:
 	TestTrader(){
 		m_pTradeApi = CZQThostFtdcTraderApi::CreateFtdcTraderApi();
+		this->BrokerID = "2011";
+		this->UserID = "020090005951";
+		this->Password = "123321";
+		this->FrontAddress = "tcp://116.228.234.67:41205";
 	}
 	
 	~TestTrader(){
@@ -22,16 +30,16 @@ public:
 
 	void init(){
 		m_pTradeApi->RegisterSpi(this);
-		m_pTradeApi->RegisterFront("tcp://116.228.234.67:41205");
+		m_pTradeApi->RegisterFront(this->FrontAddress.c_str());
 		// 使客户端开始与后台服务建立连接
 		m_pTradeApi->Init();
 	}
 
 	virtual void OnFrontConnected(){
 		CZQThostFtdcReqUserLoginField reqUserLogin;
-		strcpy(reqUserLogin.BrokerID, "2011");
-		strcpy(reqUserLogin.UserID, "020090005951");
-		strcpy(reqUserLogin.Password, "123321");
+		strcpy(reqUserLogin.BrokerID, this->BrokerID.c_str());
+		strcpy(reqUserLogin.UserID, this->UserID.c_str());
+		strcpy(reqUserLogin.Password, this->Password.c_str());
 		m_pTradeApi->ReqUserLogin(&reqUserLogin, 0);
 	}
 
@@ -45,7 +53,7 @@ public:
 			printf("Failed to login, errorcode=%d errormsg=%s requestid=%d chain=%d", pRspInfo->ErrorID, pRspInfo->ErrorMsg, nRequestID, bIsLast);
 			return;
 		}
-		test_trade();
+//		test_trade();
 //		ReqQryTradingAccount();
 //		get_trade_records();
 	}
@@ -55,8 +63,8 @@ public:
 		CZQThostFtdcQryTradingAccountField qryTradingAccount;
 		memset(&qryTradingAccount, 0, sizeof(qryTradingAccount));
 		CZQThostFtdcQryTradingAccountField *pQryTradingAccount = &qryTradingAccount;
-		strcpy(pQryTradingAccount->BrokerID,"2011");
-		strcpy(pQryTradingAccount->InvestorID,"020090005951");
+		strcpy(pQryTradingAccount->BrokerID, this->BrokerID.c_str());
+		strcpy(pQryTradingAccount->InvestorID, this->UserID.c_str());
 		m_pTradeApi->ReqQryTradingAccount( pQryTradingAccount, 2 );
 	}
 
@@ -66,13 +74,8 @@ public:
 		memset(&pQryTrade1,0,sizeof(pQryTrade1));
 		CZQThostFtdcQryTradeField * pQryTrade= &pQryTrade1;
 
-		//≤È—Ø≥…Ωª Ken////////
-		strcpy(pQryTrade->BrokerID,"2011");
-		strcpy(pQryTrade->InvestorID,"020090005951");
-		//strcpy(pQryTrade->TradeID,pTrade->TradeID);
-		//strcpy(pQryTrade->InstrumentID,pTrade->InstrumentID);
-		//strcpy(pQryTrade->TradeTimeStart,"00:00:00");
-		//strcpy(pQryTrade->TradeTimeEnd,"23:00:00");
+		strcpy(pQryTrade->BrokerID, this->BrokerID.c_str());
+		strcpy(pQryTrade->InvestorID, this->UserID.c_str());
 
 		int iResult1 = m_pTradeApi->ReqQryTrade(pQryTrade, 1);
 	}
@@ -95,9 +98,9 @@ public:
 		memset(&pInputOrder,0,sizeof(pInputOrder));
 		CZQThostFtdcInputOrderField * pIptOrdFld=&pInputOrder;
 
-		strcpy(pIptOrdFld->BrokerID,"2011");
-		strcpy(pIptOrdFld->InvestorID,"020090005951");
-		strcpy(pIptOrdFld->InstrumentID,"600000");
+		strcpy(pIptOrdFld->BrokerID, this->BrokerID.c_str());
+		strcpy(pIptOrdFld->InvestorID, this->InvestorID.c_str());
+		strcpy(pIptOrdFld->InstrumentID, "600000");
 		strcpy(pIptOrdFld->ExchangeID,"SSE");
 		pIptOrdFld->OrderPriceType=THOST_FTDC_OPT_LimitPrice;
 		pIptOrdFld->Direction=THOST_FTDC_D_Sell;
@@ -107,7 +110,6 @@ public:
 		pIptOrdFld->ContingentCondition = THOST_FTDC_CC_Immediately;
 		pIptOrdFld->ForceCloseReason = THOST_FTDC_FCC_NotForceClose;
 		strcpy(pIptOrdFld->LimitPrice,"7.77");
-//		strcpy(pIptOrdFld->UserID,"698048");
 		strcpy(pIptOrdFld->OrderRef,"1");
 //		pIptOrdFld->CombOffsetFlag[0]=THOST_FTDC_OF_Open;
 //		pIptOrdFld->CombHedgeFlag[0]=THOST_FTDC_HF_Speculation;

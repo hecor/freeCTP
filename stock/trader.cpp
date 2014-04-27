@@ -5,6 +5,7 @@
 #include "trader.h"
 
 int Trader::m_sOrderRef = 0;
+int Trader::m_sRequestID = 0;
 
 void Trader::init()
 {
@@ -20,82 +21,90 @@ void Trader::OnFrontConnected()
 	strcpy(reqUserLogin.BrokerID, this->brokerID.c_str());
 	strcpy(reqUserLogin.UserID, this->userID.c_str());
 	strcpy(reqUserLogin.Password, this->passwd.c_str());
-	m_pTradeApi->ReqUserLogin(&reqUserLogin, 0);
+	m_pTradeApi->ReqUserLogin(&reqUserLogin, ++m_sRequestID);
 }
 
 void Trader::OnRspUserLogin(CZQThostFtdcRspUserLoginField *pRspUserLogin, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
-	std::cout << "OnRspUserLogin:\t" << "ErrorCode=[" << pRspInfo->ErrorID << "], ErrorMsg=[" << pRspInfo->ErrorMsg << "]" << std::endl;
-	if (pRspInfo->ErrorID != 0)
-		std::cout << "Error: Login Error!" << std::endl;
+	cerr << "--->>> OnRspUserLogin" << endl;
+	IsErrorRspInfo(pRspInfo);
 }
 
-void Trader::buy(std::string stockid, std::string limit_price, int amount)
+bool Trader::IsErrorRspInfo(CZQThostFtdcRspInfoField *pRspInfo)
+{
+	bool bResult = ((pRspInfo) && (pRspInfo->ErrorID != 0));
+	if (bResult){
+		cerr << "------>>>>>> ErrorID=" << pRspInfo->ErrorID << ", ErrorMsg=" << pRspInfo->ErrorMsg << endl;
+		this->error_msg = pRspInfo->ErrorMsg;
+	}
+	return bResult;
+}
+
+void Trader::buy(string stockid, string limit_price, int amount)
 {
 	this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, THOST_FTDC_D_Buy);
 }
 
-void Trader::sell(std::string stockid, std::string limit_price, int amount)
+void Trader::sell(string stockid, string limit_price, int amount)
 {
 	this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, THOST_FTDC_D_Sell);
 }
 
-void Trader::trade(std::string stockID, std::string exchangeID, std::string limit_price, int amount, TZQThostFtdcDirectionType direction)
+void Trader::trade(string stockID, string exchangeID, string limit_price, int amount, TZQThostFtdcDirectionType direction)
 {
-	CZQThostFtdcInputOrderField pInputOrder;
-	memset(&pInputOrder, 0, sizeof(pInputOrder));
-	CZQThostFtdcInputOrderField *pIptOrdFld = &pInputOrder;
-
-	strcpy(pIptOrdFld->InstrumentID, stockID.c_str());
-	strcpy(pIptOrdFld->ExchangeID, exchangeID.c_str());
-	strcpy(pIptOrdFld->LimitPrice, limit_price.c_str());
-	pIptOrdFld->VolumeTotalOriginal = amount;
-	pIptOrdFld->Direction = direction;
+	CZQThostFtdcInputOrderField req;
+	memset(&req, 0, sizeof(req));
 	
-	strcpy(pIptOrdFld->BrokerID, this->brokerID.c_str());
-	strcpy(pIptOrdFld->InvestorID, this->userID.c_str());
-	pIptOrdFld->OrderPriceType = THOST_FTDC_OPT_LimitPrice;
-	pIptOrdFld->TimeCondition = THOST_FTDC_TC_GFD;
-	pIptOrdFld->VolumeCondition = THOST_FTDC_VC_AV;
-	pIptOrdFld->ContingentCondition = THOST_FTDC_CC_Immediately;
-	pIptOrdFld->ForceCloseReason = THOST_FTDC_FCC_NotForceClose;
+	strcpy(req.BrokerID, this->brokerID.c_str());
+	strcpy(req.InvestorID, this->userID.c_str());
+	req.OrderPriceType = THOST_FTDC_OPT_LimitPrice;
+
+	strcpy(req.InstrumentID, stockID.c_str());
+	strcpy(req.ExchangeID, exchangeID.c_str());
+	strcpy(req.LimitPrice, limit_price.c_str());
+	req.VolumeTotalOriginal = amount;
+	req.Direction = direction;
+	
 	char buffer[10];
 	sprintf(buffer, "%d", m_sOrderRef++);
-	strcpy(pIptOrdFld->OrderRef, buffer);
-//		strcpy(pIptOrdFld->UserID,"698048");
-//		pIptOrdFld->CombOffsetFlag[0]=THOST_FTDC_OF_Open;
-//		pIptOrdFld->CombHedgeFlag[0]=THOST_FTDC_HF_Speculation;
-//		strcpy(pIptOrdFld->GTDDate,"20140202");
-//		pIptOrdFld->MinVolume=1;
-//		pIptOrdFld->IsAutoSuspend = 0;
-	pIptOrdFld->UserForceClose = 0;
-	pIptOrdFld->RequestID = 1;
+	strcpy(req.OrderRef, buffer);
 	
-	m_pTradeApi->ReqOrderInsert(pIptOrdFld, 1);
+	req.TimeCondition = THOST_FTDC_TC_GFD;
+	req.VolumeCondition = THOST_FTDC_VC_AV;
+	req.ContingentCondition = THOST_FTDC_CC_Immediately;
+	req.ForceCloseReason = THOST_FTDC_FCC_NotForceClose;
+	
+//	req.CombOffsetFlag[0]=THOST_FTDC_OF_Open;
+//	req.CombHedgeFlag[0]=THOST_FTDC_HF_Speculation;
+//	req.MinVolume=1;
+//	req.IsAutoSuspend = 0;
+	req.UserForceClose = 0;
+	req.RequestID = ++m_sRequestID;
+	
+	m_pTradeApi->ReqOrderInsert(&req, m_sRequestID);
 }
 
 void Trader::OnRspOrderInsert(CZQThostFtdcInputOrderField *pInputOrder,CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
 	// 输出报单录入结果
-//	std::cout << "OnRspOrderInsert: inputorder.VolumeCondition: " << pInputOrder->VolumeCondition << std::endl;
-//	std::cout << "OnRspOrderInsert: inputorder.TimeCondition: " << pInputOrder->TimeCondition << std::endl;
-//	std::cout << "OnRspOrderInsert: inputorder.ForceCloseReason: " << pInputOrder->ForceCloseReason << std::endl;
-	std::cout << "OnRspOrderInsert: ErrorCode=" << pRspInfo->ErrorID << ", ErrorMsg=" << pRspInfo->ErrorMsg;
+	cout << "--->>> OnRspOrderInsert" << endl;
+	IsErrorRspInfo(pRspInfo);
 }
 
 void Trader::OnRtnTrade(CZQThostFtdcTradeField *pTrade)
 {
-	std::cout << "Trade notification: \n" << pTrade->InstrumentID << '\t' << pTrade->Direction << '\t' << pTrade->Price << '\t' << pTrade->Volume << '\t' << pTrade->TradeDate << ' ' << pTrade->TradeTime << std::endl;
+	cerr << "--->>> Trade notification: \n" << pTrade->InstrumentID << '\t' << pTrade->Direction << '\t' << pTrade->Price << '\t' << pTrade->Volume << '\t' << pTrade->TradeDate << ' ' << pTrade->TradeTime << endl;
 }
 
 void Trader::OnRtnOrder(CZQThostFtdcOrderField *pOrder)
 {
-	std::cout << "Order Return notification: " << pOrder->InstrumentID << '\t' << pOrder->LimitPrice << '\t' << pOrder->VolumeTraded << std::endl;
+	cerr << "--->>> Order Return notification: " << pOrder->InstrumentID << '\t' << pOrder->LimitPrice << '\t' << pOrder->VolumeTraded << endl;
 }
 
 // 针对用户请求的出错通知
 void Trader::OnRspError(CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
-	std::cout << "OnRspError: ErrorCode=" << pRspInfo->ErrorID << ", ErrorMsg=" << pRspInfo->ErrorMsg << std::endl;
+	cerr << "--->>> OnRspError" << endl;
+	IsErrorRspInfo(pRspInfo);
 }
 
 void Trader::update_stock_info()
@@ -106,10 +115,10 @@ void Trader::update_stock_info()
 	memset(&query, 0, sizeof(query));
 	strcpy(query.BrokerID, this->brokerID.c_str());
 	strcpy(query.InvestorID, this->userID.c_str());
-	m_pTradeApi->ReqQryInvestorPosition(&query, 3);
+	m_pTradeApi->ReqQryInvestorPosition(&query, ++m_sRequestID);
 }
 
-std::map< std::string, int > Trader::get_stock_info()
+map< string, int > Trader::get_stock_info()
 {
 	return this->stock_info;
 }
@@ -118,7 +127,7 @@ void Trader::OnRspQryInvestorPosition(CZQThostFtdcInvestorPositionField *pInvest
 {
 	if( pInvestorPosition )
 	{
-		std::string stockid = ExchangeIDDict_Reverse[pInvestorPosition->ExchangeID] + pInvestorPosition->InstrumentID;
+		string stockid = ExchangeIDDict_Reverse[pInvestorPosition->ExchangeID] + pInvestorPosition->InstrumentID;
 		this->stock_info[ stockid ] = pInvestorPosition->YdPosition;
 	}
 }
@@ -132,10 +141,10 @@ void Trader::update_trade_records()
 
 	strcpy(query.BrokerID, this->brokerID.c_str());
 	strcpy(query.InvestorID, this->userID.c_str());
-	m_pTradeApi->ReqQryTrade(&query, 4);
+	m_pTradeApi->ReqQryTrade(&query, ++m_sRequestID);
 }
 
-std::vector< std::string > Trader::get_trade_records()
+vector< string > Trader::get_trade_records()
 {
 	return this->trade_records;
 }
@@ -144,7 +153,7 @@ void Trader::OnRspQryTrade(CZQThostFtdcTradeField *pTrade, CZQThostFtdcRspInfoFi
 {
 	if( pTrade )
 	{
-		std::ostringstream oss;
+		ostringstream oss;
 		oss << pTrade->TradeDate << ' ' << pTrade->TradeTime << ' ' << pTrade->Direction << ' ' << ExchangeIDDict_Reverse[pTrade->ExchangeID] << pTrade->InstrumentID << ' ' << pTrade->Price << ' ' << pTrade->Volume;
 		this->trade_records.push_back( oss.str() );
 	}
@@ -156,16 +165,17 @@ void Trader::takeout_fund(int amount)
 	memset(&query, 0, sizeof(query));
 
 	strcpy(query.BrokerID, this->brokerID.c_str());
-	strcpy(query.InvestorID, this->userID.c_str());
-	strcpy(query.AccountID, this->userID.c_str());
+//	strcpy(query.InvestorID, this->userID.c_str());
+//	strcpy(query.AccountID, this->userID.c_str());
 	strcpy(query.UserID, this->userID.c_str());
 	strcpy(query.Password, "111203");
 	query.TradeAmount = amount;
-	m_pTradeApi->ReqFundOutCTPAccount(&query, 5);
+	m_pTradeApi->ReqFundOutCTPAccount(&query, ++m_sRequestID);
 }
 
 void Trader::OnRspFundOutCTPAccount(CZQThostFtdcRspFundIOCTPAccountField *pRspFundIOCTPAccount, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
-	std::cout << "Response on takeout_fund: ErrorCode=" << pRspInfo->ErrorID << ", ErrorMsg=" << pRspInfo->ErrorMsg << std::endl;
+	cerr << "--->>> OnRspFundOutCTPAccount" << endl;
+	IsErrorRspInfo(pRspInfo);
 }
 
