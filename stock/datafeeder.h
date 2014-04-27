@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include "./api/level2_ns.h"
 #include "./api/ThostFtdcLevel2UserApi.h"
 #include "./api/ThostFtdcUserApiStructSSE.h"
 

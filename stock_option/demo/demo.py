@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import time
-from pzyctp.stock import datafeeder, trader
+from pzyctp.stock_option import datafeeder
 
 def test_datafeeder():
-    t = datafeeder.DataFeeder('tcp://116.228.234.67:41205', '2011', '020090005951', '123321')
+    t = datafeeder.DataFeeder('tcp://211.144.195.163:34513', '2011', '020090031176', '123321')
     time.sleep(5)
-    t.subscrib_L2_market_data('sz002029')
+    t.subscrib_market_data('sh10000033')
     while 1:
         print t.get_L2_market_data('sz002029')
         time.sleep(2)

@@ -17,7 +17,7 @@ public:
 		this->brokerID = brokerID;
 		this->userID = userID;
 		this->passwd = passwd;
-		m_pTradeApi = CZQThostFtdcTraderApi::CreateFtdcTraderApi("/tmp/CTP_tradedata/");
+		m_pTradeApi = CZQThostFtdcTraderApi::CreateFtdcTraderApi("/tmp/CTP_stock_option_trade/");
 		this->init();
 		this->ExchangeIDDict["sh"] = "SSE";
 		this->ExchangeIDDict["sz"] = "SZE";
