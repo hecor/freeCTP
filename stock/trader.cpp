@@ -132,6 +132,35 @@ void Trader::OnRspQryInvestorPosition(CZQThostFtdcInvestorPositionField *pInvest
 	}
 }
 
+void Trader::update_account_info()
+{
+	CZQThostFtdcQryTradingAccountField query;
+	memset(&query, 0, sizeof(query));
+	strcpy(query.BrokerID, this->brokerID.c_str());
+	strcpy(query.InvestorID, this->userID.c_str());
+	m_pTradeApi->ReqQryTradingAccount(&query, ++m_sRequestID);
+}
+
+map< string, double > Trader::get_account_info()
+{
+	return this->account_info;
+}
+
+void Trader::OnRspQryTradingAccount(CZQThostFtdcTradingAccountField *pTradingAccount, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+{
+	if( pTradingAccount )
+	{
+		this->account_info["Available"] = pTradingAccount->Available;
+		this->account_info["Commission"] = pTradingAccount->Commission;
+		this->account_info["Balance"] = pTradingAccount->Balance;
+		this->account_info["WithdrawQuota"] = pTradingAccount->WithdrawQuota;
+		this->account_info["Reserve"] = pTradingAccount->Reserve;
+		this->account_info["Credit"] = pTradingAccount->Credit;
+		this->account_info["PositionProfit"] = pTradingAccount->PositionProfit;
+		this->account_info["CloseProfit"] = pTradingAccount->CloseProfit;
+	}
+}
+
 void Trader::update_trade_records()
 {
 	trade_records.clear();

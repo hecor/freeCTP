@@ -35,6 +35,8 @@ public:
 	void sell(string stockid, string limit_price, int amount);
 	void update_stock_info();
 	map< string, int > get_stock_info();
+	void update_account_info();
+	map< string, double > get_account_info();
 	void update_trade_records();
 	vector< string > get_trade_records();
 	void takeout_fund(int amount);
@@ -53,6 +55,7 @@ private:
 	map< string, string > ExchangeIDDict;
 	map< string, string > ExchangeIDDict_Reverse;
 	map< string, int > stock_info;
+	map< string, double > account_info;
 	vector< string > trade_records;
 	string error_msg;
 
@@ -69,6 +72,7 @@ private:
 	void OnRspQryInvestorPosition(CZQThostFtdcInvestorPositionField *pInvestorPosition, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 	void OnRspQryTrade(CZQThostFtdcTradeField *pTrade, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 	void OnRspFundOutCTPAccount(CZQThostFtdcRspFundIOCTPAccountField *pRspFundIOCTPAccount, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	void OnRspQryTradingAccount(CZQThostFtdcTradingAccountField *pTradingAccount, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 };
 
 #endif /* end of include guard: _TRADER_H__ */
