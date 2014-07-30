@@ -33,4 +33,5 @@ Format of market data:
 
 Error Code for ctp
 ==================
-* OnRspOrderInsert: ErrorCode=15, 报单字段有误
+* OnRspOrderInsert: ErrorCode=15, 报单字段有误；
+* OnRspOrderInsert: ErrorCode=31, 资金不足；
