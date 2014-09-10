@@ -35,3 +35,4 @@ Error Code for ctp
 ==================
 * OnRspOrderInsert: ErrorCode=15, 报单字段有误；
 * OnRspOrderInsert: ErrorCode=31, 资金不足；
+* OnRspOrderInsert: ErrorCode=37, 股票不足；
