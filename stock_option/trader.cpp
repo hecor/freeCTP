@@ -17,20 +17,20 @@ void Trader::init()
 
 void Trader::OnFrontConnected()
 {
-	CZQThostFtdcReqUserLoginField reqUserLogin;
+	CSecurityFtdcReqUserLoginField reqUserLogin;
 	strcpy(reqUserLogin.BrokerID, this->brokerID.c_str());
 	strcpy(reqUserLogin.UserID, this->userID.c_str());
 	strcpy(reqUserLogin.Password, this->passwd.c_str());
 	m_pTradeApi->ReqUserLogin(&reqUserLogin, ++m_sRequestID);
 }
 
-void Trader::OnRspUserLogin(CZQThostFtdcRspUserLoginField *pRspUserLogin, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void Trader::OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	cerr << "--->>> OnRspUserLogin" << endl;
 	IsErrorRspInfo(pRspInfo);
 }
 
-bool Trader::IsErrorRspInfo(CZQThostFtdcRspInfoField *pRspInfo)
+bool Trader::IsErrorRspInfo(CSecurityFtdcRspInfoField *pRspInfo)
 {
 	bool bResult = ((pRspInfo) && (pRspInfo->ErrorID != 0));
 	if (bResult){
@@ -42,22 +42,22 @@ bool Trader::IsErrorRspInfo(CZQThostFtdcRspInfoField *pRspInfo)
 
 void Trader::buy(string stockid, string limit_price, int amount)
 {
-	this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, THOST_FTDC_D_Buy);
+	this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, SECURITY_FTDC_D_Buy);
 }
 
 void Trader::sell(string stockid, string limit_price, int amount)
 {
-	this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, THOST_FTDC_D_Sell);
+	this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, SECURITY_FTDC_D_Sell);
 }
 
-void Trader::trade(string stockID, string exchangeID, string limit_price, int amount, TZQThostFtdcDirectionType direction)
+void Trader::trade(string stockID, string exchangeID, string limit_price, int amount, TSecurityFtdcDirectionType direction)
 {
-	CZQThostFtdcInputOrderField req;
+	CSecurityFtdcInputOrderField req;
 	memset(&req, 0, sizeof(req));
 	
 	strcpy(req.BrokerID, this->brokerID.c_str());
 	strcpy(req.InvestorID, this->userID.c_str());
-	req.OrderPriceType = THOST_FTDC_OPT_LimitPrice;
+	req.OrderPriceType = SECURITY_FTDC_OPT_LimitPrice;
 
 	strcpy(req.InstrumentID, stockID.c_str());
 	strcpy(req.ExchangeID, exchangeID.c_str());
@@ -69,13 +69,13 @@ void Trader::trade(string stockID, string exchangeID, string limit_price, int am
 	sprintf(buffer, "%d", m_sOrderRef++);
 	strcpy(req.OrderRef, buffer);
 	
-	req.TimeCondition = THOST_FTDC_TC_GFD;
-	req.VolumeCondition = THOST_FTDC_VC_AV;
-	req.ContingentCondition = THOST_FTDC_CC_Immediately;
-	req.ForceCloseReason = THOST_FTDC_FCC_NotForceClose;
+	req.TimeCondition = SECURITY_FTDC_TC_GFD;
+	req.VolumeCondition = SECURITY_FTDC_VC_AV;
+	req.ContingentCondition = SECURITY_FTDC_CC_Immediately;
+	req.ForceCloseReason = SECURITY_FTDC_FCC_NotForceClose;
 	
-//	req.CombOffsetFlag[0]=THOST_FTDC_OF_Open;
-//	req.CombHedgeFlag[0]=THOST_FTDC_HF_Speculation;
+//	req.CombOffsetFlag[0]=SECURITY_FTDC_OF_Open;
+//	req.CombHedgeFlag[0]=SECURITY_FTDC_HF_Speculation;
 //	req.MinVolume=1;
 //	req.IsAutoSuspend = 0;
 	req.UserForceClose = 0;
@@ -84,24 +84,24 @@ void Trader::trade(string stockID, string exchangeID, string limit_price, int am
 	m_pTradeApi->ReqOrderInsert(&req, m_sRequestID);
 }
 
-void Trader::OnRspOrderInsert(CZQThostFtdcInputOrderField *pInputOrder,CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
+void Trader::OnRspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
 	// 输出报单录入结果
 	cout << "--->>> OnRspOrderInsert" << endl;
 	IsErrorRspInfo(pRspInfo);
 }
 
-void Trader::OnRtnTrade(CZQThostFtdcTradeField *pTrade)
+void Trader::OnRtnTrade(CSecurityFtdcTradeField *pTrade)
 {
 	cerr << "--->>> Trade notification: \n" << pTrade->InstrumentID << '\t' << pTrade->Direction << '\t' << pTrade->Price << '\t' << pTrade->Volume << '\t' << pTrade->TradeDate << ' ' << pTrade->TradeTime << endl;
 }
 
-void Trader::OnRtnOrder(CZQThostFtdcOrderField *pOrder)
+void Trader::OnRtnOrder(CSecurityFtdcOrderField *pOrder)
 {
 	cerr << "--->>> Order Return notification: " << pOrder->InstrumentID << '\t' << pOrder->LimitPrice << '\t' << pOrder->VolumeTraded << endl;
 }
 
 // 针对用户请求的出错通知
-void Trader::OnRspError(CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void Trader::OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	cerr << "--->>> OnRspError" << endl;
 	IsErrorRspInfo(pRspInfo);
@@ -111,7 +111,7 @@ void Trader::update_stock_info()
 {
 	stock_info.clear();
 
-	CZQThostFtdcQryInvestorPositionField query;
+	CSecurityFtdcQryInvestorPositionField query;
 	memset(&query, 0, sizeof(query));
 	strcpy(query.BrokerID, this->brokerID.c_str());
 	strcpy(query.InvestorID, this->userID.c_str());
@@ -123,7 +123,7 @@ map< string, int > Trader::get_stock_info()
 	return this->stock_info;
 }
 
-void Trader::OnRspQryInvestorPosition(CZQThostFtdcInvestorPositionField *pInvestorPosition, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void Trader::OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInvestorPosition, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( pInvestorPosition )
 	{
@@ -136,7 +136,7 @@ void Trader::update_trade_records()
 {
 	trade_records.clear();
 
-	CZQThostFtdcQryTradeField query;
+	CSecurityFtdcQryTradeField query;
 	memset(&query, 0, sizeof(query));
 
 	strcpy(query.BrokerID, this->brokerID.c_str());
@@ -149,7 +149,7 @@ vector< string > Trader::get_trade_records()
 	return this->trade_records;
 }
 
-void Trader::OnRspQryTrade(CZQThostFtdcTradeField *pTrade, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+void Trader::OnRspQryTrade(CSecurityFtdcTradeField *pTrade, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( pTrade )
 	{
@@ -159,23 +159,23 @@ void Trader::OnRspQryTrade(CZQThostFtdcTradeField *pTrade, CZQThostFtdcRspInfoFi
 	}
 }
 
-void Trader::takeout_fund(int amount)
-{
-	CZQThostFtdcReqFundIOCTPAccountField query;
-	memset(&query, 0, sizeof(query));
-
-	strcpy(query.BrokerID, this->brokerID.c_str());
-//	strcpy(query.InvestorID, this->userID.c_str());
-//	strcpy(query.AccountID, this->userID.c_str());
-	strcpy(query.UserID, this->userID.c_str());
-	strcpy(query.Password, "111203");
-	query.TradeAmount = amount;
-	m_pTradeApi->ReqFundOutCTPAccount(&query, ++m_sRequestID);
-}
-
-void Trader::OnRspFundOutCTPAccount(CZQThostFtdcRspFundIOCTPAccountField *pRspFundIOCTPAccount, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
-{
-	cerr << "--->>> OnRspFundOutCTPAccount" << endl;
-	IsErrorRspInfo(pRspInfo);
-}
+//void Trader::takeout_fund(int amount)
+//{
+//	CSecurityFtdcReqFundIOCTPAccountField query;
+//	memset(&query, 0, sizeof(query));
+//
+//	strcpy(query.BrokerID, this->brokerID.c_str());
+////	strcpy(query.InvestorID, this->userID.c_str());
+////	strcpy(query.AccountID, this->userID.c_str());
+//	strcpy(query.UserID, this->userID.c_str());
+//	strcpy(query.Password, "111203");
+//	query.TradeAmount = amount;
+//	m_pTradeApi->ReqFundOutCTPAccount(&query, ++m_sRequestID);
+//}
+//
+//void Trader::OnRspFundOutCTPAccount(CSecurityFtdcRspFundIOCTPAccountField *pRspFundIOCTPAccount, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+//{
+//	cerr << "--->>> OnRspFundOutCTPAccount" << endl;
+//	IsErrorRspInfo(pRspInfo);
+//}
 

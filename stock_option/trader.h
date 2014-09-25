@@ -4,12 +4,12 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "./api/ThostFtdcTraderApiSSE.h"
-#include "./api/ThostFtdcUserApiDataTypeSSE.h"
+#include "./api/SecurityFtdcTraderApi.h"
+#include "./api/SecurityFtdcUserApiDataType.h"
 
 using namespace std;
 
-class Trader : public CZQThostFtdcTraderSpi
+class Trader : public CSecurityFtdcTraderSpi
 {
 public:
 	Trader(string front_address, string brokerID, string userID, string passwd){
@@ -17,14 +17,14 @@ public:
 		this->brokerID = brokerID;
 		this->userID = userID;
 		this->passwd = passwd;
-		m_pTradeApi = CZQThostFtdcTraderApi::CreateFtdcTraderApi("/tmp/CTP_stock_option_trade/");
+		m_pTradeApi = CSecurityFtdcTraderApi::CreateFtdcTraderApi("/tmp/CTP_stock_option_trade/");
 		this->init();
 		this->ExchangeIDDict["sh"] = "SSE";
 		this->ExchangeIDDict["sz"] = "SZE";
 		this->ExchangeIDDict_Reverse["SSE"] = "sh";
 		this->ExchangeIDDict_Reverse["SZE"] = "sz";
-		m_pTradeApi->SubscribePrivateTopic(ZQTHOST_TERT_RESUME);
-		m_pTradeApi->SubscribePublicTopic(ZQTHOST_TERT_RESUME);
+		m_pTradeApi->SubscribePrivateTopic(SECURITY_TERT_RESUME);
+		m_pTradeApi->SubscribePublicTopic(SECURITY_TERT_RESUME);
 	}
 	
 	~Trader(){
@@ -37,15 +37,14 @@ public:
 	map< string, int > get_stock_info();
 	void update_trade_records();
 	vector< string > get_trade_records();
-	void takeout_fund(int amount);
 
-	bool IsErrorRspInfo(CZQThostFtdcRspInfoField *pRspInfo);
+	bool IsErrorRspInfo(CSecurityFtdcRspInfoField *pRspInfo);
 	string get_error_msg(){ return error_msg; }
 
 private:
 	static int m_sRequestID;
 	static int m_sOrderRef;
-	CZQThostFtdcTraderApi *m_pTradeApi;
+	CSecurityFtdcTraderApi *m_pTradeApi;
 	string brokerID;
 	string userID;
 	string passwd;
@@ -58,17 +57,19 @@ private:
 
 	void init();
 	void OnFrontConnected();
-	void trade(string stockID, string exchangeID, string limit_price, int amount, TZQThostFtdcDirectionType direction);
+	void trade(string stockID, string exchangeID, string limit_price, int amount, TSecurityFtdcDirectionType direction);
 
-	void OnRtnOrder(CZQThostFtdcOrderField *pOrder);
-	void OnRspError(CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
-	void OnRtnTrade(CZQThostFtdcTradeField *pTrade);
+	void OnRtnOrder(CSecurityFtdcOrderField *pOrder);
+	void OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	void OnRtnTrade(CSecurityFtdcTradeField *pTrade);
 	
-	void OnRspUserLogin(CZQThostFtdcRspUserLoginField *pRspUserLogin, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
-	void OnRspOrderInsert(CZQThostFtdcInputOrderField *pInputOrder,CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
-	void OnRspQryInvestorPosition(CZQThostFtdcInvestorPositionField *pInvestorPosition, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
-	void OnRspQryTrade(CZQThostFtdcTradeField *pTrade, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
-	void OnRspFundOutCTPAccount(CZQThostFtdcRspFundIOCTPAccountField *pRspFundIOCTPAccount, CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	void OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	void OnRspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	void OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInvestorPosition, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	void OnRspQryTrade(CSecurityFtdcTradeField *pTrade, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+
+//	void takeout_fund(int amount);
+//	void OnRspFundOutCTPAccount(CSecurityFtdcRspFundIOCTPAccountField *pRspFundIOCTPAccount, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 };
 
 #endif /* end of include guard: _TRADER_H__ */
