@@ -16,7 +16,7 @@ public:
         this->brokerID = brokerID;
         this->userID = userID;
         this->passwd = passwd;
-        this->m_pMdApi = CSecurityFtdcMdApi::CreateFtdcMdApi("/tmp/CTP_stock_option_data/");
+        this->m_pMdApi = CSecurityFtdcMdApi::CreateFtdcMdApi("/tmp/CTP_LTS_data/");
         this->init();
         this->ExchangeIDDict["sh"] = "SSE";
         this->ExchangeIDDict["sz"] = "SZE";

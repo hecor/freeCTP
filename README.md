@@ -13,7 +13,7 @@ Install:
 **Remember to create two dirs in /tmp before you run pzyctp.**
 * if you use ctp for stock: ("/tmp/CTP_L2data/" and "/tmp/CTP_tradedata/")
 * if you use ctp for future: ("/tmp/CTP_future_data/" and "/tmp/CTP_future_trade")
-* if you use ctp for stock_option: ("/tmp/CTP_stock_option_data/" and "/tmp/CTP_stock_option_trade/")
+* if you use ctp for LTS: ("/tmp/CTP_LTS_data/" and "/tmp/CTP_LTS_trade/")
 
 
 Format of market data:
@@ -26,7 +26,7 @@ Format of market data:
 
 	InstrumentID, TradingDay, UpdateTime, LastPrice, PreClosePrice, OpenPrice, ClosePrice, HighestPrice, LowestPrice, Volume, Turnover, BidPrice1, BidVolume1, BidPrice2, BidVolume2, BidPrice3, BidVolume3, AskPrice1, AskVolume1, AskPrice2, AskVolume2, AskPrice3, AskVolume3
 
-* stock_option:
+* LTS:
 
 	stockid, TradingDay, UpdateTime, LastPrice, PreClosePrice, OpenPrice, ClosePrice, HighestPrice, LowestPrice, Volume, Turnover, BidPrice1, BidVolume1, BidPrice2, BidVolume2, BidPrice3, BidVolume3, AskPrice1, AskVolume1, AskPrice2, AskVolume2, AskPrice3, AskVolume3
 
@@ -36,3 +36,4 @@ Error Code for ctp
 * OnRspOrderInsert: ErrorCode=15, 报单字段有误；
 * OnRspOrderInsert: ErrorCode=31, 资金不足；
 * OnRspOrderInsert: ErrorCode=37, 股票不足；
+* ErrorID=49, Liber交易平台：客户端认证失败"

@@ -18,6 +18,7 @@ void Trader::init()
 void Trader::OnFrontConnected()
 {
 	CZQThostFtdcReqUserLoginField reqUserLogin;
+	memset(&reqUserLogin, 0, sizeof(reqUserLogin));
 	strcpy(reqUserLogin.BrokerID, this->brokerID.c_str());
 	strcpy(reqUserLogin.UserID, this->userID.c_str());
 	strcpy(reqUserLogin.Password, this->passwd.c_str());
@@ -107,7 +108,7 @@ void Trader::OnRspError(CZQThostFtdcRspInfoField *pRspInfo, int nRequestID, bool
 	IsErrorRspInfo(pRspInfo);
 }
 
-void Trader::update_stock_info()
+void Trader::update_position_info()
 {
 	stock_info.clear();
 
@@ -118,7 +119,7 @@ void Trader::update_stock_info()
 	m_pTradeApi->ReqQryInvestorPosition(&query, ++m_sRequestID);
 }
 
-map< string, int > Trader::get_stock_info()
+map< string, int > Trader::get_position_info()
 {
 	return this->stock_info;
 }

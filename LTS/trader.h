@@ -17,7 +17,7 @@ public:
 		this->brokerID = brokerID;
 		this->userID = userID;
 		this->passwd = passwd;
-		m_pTradeApi = CSecurityFtdcTraderApi::CreateFtdcTraderApi("/tmp/CTP_stock_option_trade/");
+		m_pTradeApi = CSecurityFtdcTraderApi::CreateFtdcTraderApi("/tmp/CTP_LTS_trade/");
 		this->init();
 		this->ExchangeIDDict["sh"] = "SSE";
 		this->ExchangeIDDict["sz"] = "SZE";
@@ -33,8 +33,10 @@ public:
 
 	void buy(string stockid, string limit_price, int amount);
 	void sell(string stockid, string limit_price, int amount);
-	void update_stock_info();
-	map< string, int > get_stock_info();
+	void update_position_info();
+	map< string, int > get_position_info();
+	void update_account_info();
+	map< string, double > get_account_info();
 	void update_trade_records();
 	vector< string > get_trade_records();
 
@@ -51,7 +53,8 @@ private:
 	string front_address;
 	map< string, string > ExchangeIDDict;
 	map< string, string > ExchangeIDDict_Reverse;
-	map< string, int > stock_info;
+	map< string, double > account_info;
+	map< string, int > position_info;
 	vector< string > trade_records;
 	string error_msg;
 
@@ -66,10 +69,9 @@ private:
 	void OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 	void OnRspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 	void OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInvestorPosition, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	void OnRspQryTradingAccount(CSecurityFtdcTradingAccountField *pTradingAccount, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 	void OnRspQryTrade(CSecurityFtdcTradeField *pTrade, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-//	void takeout_fund(int amount);
-//	void OnRspFundOutCTPAccount(CSecurityFtdcRspFundIOCTPAccountField *pRspFundIOCTPAccount, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 };
 
 #endif /* end of include guard: _TRADER_H__ */

@@ -19,6 +19,7 @@ void Trader::init()
 void Trader::OnFrontConnected()
 {
 	CThostFtdcReqUserLoginField reqUserLogin;
+	memset(&reqUserLogin, 0, sizeof(reqUserLogin));
 	strcpy(reqUserLogin.BrokerID, this->brokerID.c_str());
 	strcpy(reqUserLogin.UserID, this->userID.c_str());
 	strcpy(reqUserLogin.Password, this->passwd.c_str());

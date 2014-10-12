@@ -81,11 +81,14 @@ public:
 	///请求查询行情响应
 	virtual void OnRspQryDepthMarketData(CSecurityFtdcDepthMarketDataField *pDepthMarketData, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 
-	///请求查询投资者持仓明细响应
-	virtual void OnRspQryInvestorPositionDetail(CSecurityFtdcInvestorPositionDetailField *pInvestorPositionDetail, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
-
 	///请求查询债券利息响应
 	virtual void OnRspQryBondInterest(CSecurityFtdcBondInterestField *pBondInterest, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///请求查询市值配售信息响应
+	virtual void OnRspQryMarketRationInfo(CSecurityFtdcMarketRationInfoField *pMarketRationInfo, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///请求查询合约手续费率响应
+	virtual void OnRspQryInstrumentCommissionRate(CSecurityFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 
 	///请求查询报单响应
 	virtual void OnRspQryOrder(CSecurityFtdcOrderField *pOrder, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
@@ -107,6 +110,21 @@ public:
 
 	///报单操作错误回报
 	virtual void OnErrRtnOrderAction(CSecurityFtdcOrderActionField *pOrderAction, CSecurityFtdcRspInfoField *pRspInfo) {};
+
+	///Liber发起出金应答
+	virtual void OnRspFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+
+	///Liber发起出金通知
+	virtual void OnRtnFundOutByLiber(CSecurityFtdcFundTransferField *pFundTransfer) {};
+
+	///iber发起出金错误回报
+	virtual void OnErrRtnFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer, CSecurityFtdcRspInfoField *pRspInfo) {};
+
+	///银行发起入金通知
+	virtual void OnRtnFundInByBank(CSecurityFtdcFundTransferField *pFundTransfer) {};
+
+	///资金转账查询应答
+	virtual void OnRspQryFundTransferSerial(CSecurityFtdcFundTransferField *pFundTransfer, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 };
 
 #ifndef WINDOWS
@@ -203,11 +221,14 @@ public:
 	///请求查询行情
 	virtual int ReqQryDepthMarketData(CSecurityFtdcQryDepthMarketDataField *pQryDepthMarketData, int nRequestID) = 0;
 
-	///请求查询投资者持仓明细
-	virtual int ReqQryInvestorPositionDetail(CSecurityFtdcQryInvestorPositionDetailField *pQryInvestorPositionDetail, int nRequestID) = 0;
-
 	///请求查询债券利息
 	virtual int ReqQryBondInterest(CSecurityFtdcQryBondInterestField *pQryBondInterest, int nRequestID) = 0;
+
+	///请求查询市值配售信息
+	virtual int ReqQryMarketRationInfo(CSecurityFtdcQryMarketRationInfoField *pQryMarketRationInfo, int nRequestID) = 0;
+
+	///请求查询合约手续费率
+	virtual int ReqQryInstrumentCommissionRate(CSecurityFtdcQryInstrumentCommissionRateField *pQryInstrumentCommissionRate, int nRequestID) = 0;
 
 	///请求查询报单
 	virtual int ReqQryOrder(CSecurityFtdcQryOrderField *pQryOrder, int nRequestID) = 0;
@@ -217,6 +238,12 @@ public:
 
 	///请求查询投资者持仓
 	virtual int ReqQryInvestorPosition(CSecurityFtdcQryInvestorPositionField *pQryInvestorPosition, int nRequestID) = 0;
+
+	///Liber发起出金请求
+	virtual int ReqFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer, int nRequestID) = 0;
+
+	///资金转账查询请求
+	virtual int ReqQryFundTransferSerial(CSecurityFtdcQryFundTransferSerialField *pQryFundTransferSerial, int nRequestID) = 0;
 protected:
 	~CSecurityFtdcTraderApi(){};
 };

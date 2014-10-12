@@ -33,8 +33,8 @@ public:
 
 	void buy(string stockid, string limit_price, int amount);
 	void sell(string stockid, string limit_price, int amount);
-	void update_stock_info();
-	map< string, int > get_stock_info();
+	void update_position_info();
+	map< string, int > get_position_info();
 	void update_account_info();
 	map< string, double > get_account_info();
 	void update_trade_records();

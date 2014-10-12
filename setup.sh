@@ -9,7 +9,7 @@ fi
 mkdir pzyctp
 cp __init__.py pzyctp/
 
-LIST="stock future stock_option"
+LIST="stock future LTS"
 for d in $LIST
 do
 	mkdir pzyctp/$d

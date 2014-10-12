@@ -18,6 +18,7 @@ void Trader::init()
 void Trader::OnFrontConnected()
 {
 	CSecurityFtdcReqUserLoginField reqUserLogin;
+	memset(&reqUserLogin, 0, sizeof(reqUserLogin));
 	strcpy(reqUserLogin.BrokerID, this->brokerID.c_str());
 	strcpy(reqUserLogin.UserID, this->userID.c_str());
 	strcpy(reqUserLogin.Password, this->passwd.c_str());
@@ -107,9 +108,9 @@ void Trader::OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, boo
 	IsErrorRspInfo(pRspInfo);
 }
 
-void Trader::update_stock_info()
+void Trader::update_position_info()
 {
-	stock_info.clear();
+	position_info.clear();
 
 	CSecurityFtdcQryInvestorPositionField query;
 	memset(&query, 0, sizeof(query));
@@ -118,9 +119,9 @@ void Trader::update_stock_info()
 	m_pTradeApi->ReqQryInvestorPosition(&query, ++m_sRequestID);
 }
 
-map< string, int > Trader::get_stock_info()
+map< string, int > Trader::get_position_info()
 {
-	return this->stock_info;
+	return this->position_info;
 }
 
 void Trader::OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInvestorPosition, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
@@ -128,7 +129,34 @@ void Trader::OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInves
 	if( pInvestorPosition )
 	{
 		string stockid = ExchangeIDDict_Reverse[pInvestorPosition->ExchangeID] + pInvestorPosition->InstrumentID;
-		this->stock_info[ stockid ] = pInvestorPosition->YdPosition;
+		this->position_info[ stockid ] = pInvestorPosition->YdPosition;
+	}
+}
+
+void Trader::update_account_info()
+{
+	CSecurityFtdcQryTradingAccountField query;
+	memset(&query, 0, sizeof(query));
+	strcpy(query.BrokerID, this->brokerID.c_str());
+	strcpy(query.InvestorID, this->userID.c_str());
+	m_pTradeApi->ReqQryTradingAccount(&query, ++m_sRequestID);
+}
+
+map< string, double > Trader::get_account_info()
+{
+	return this->account_info;
+}
+
+void Trader::OnRspQryTradingAccount(CSecurityFtdcTradingAccountField *pTradingAccount, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+{
+	if( pTradingAccount )
+	{
+		this->account_info["Available"] = pTradingAccount->Available;
+		this->account_info["Commission"] = pTradingAccount->Commission;
+		this->account_info["Balance"] = pTradingAccount->Balance;
+		this->account_info["WithdrawQuota"] = pTradingAccount->WithdrawQuota;
+		this->account_info["Reserve"] = pTradingAccount->Reserve;
+		this->account_info["Credit"] = pTradingAccount->Credit;
 	}
 }
 
@@ -158,24 +186,4 @@ void Trader::OnRspQryTrade(CSecurityFtdcTradeField *pTrade, CSecurityFtdcRspInfo
 		this->trade_records.push_back( oss.str() );
 	}
 }
-
-//void Trader::takeout_fund(int amount)
-//{
-//	CSecurityFtdcReqFundIOCTPAccountField query;
-//	memset(&query, 0, sizeof(query));
-//
-//	strcpy(query.BrokerID, this->brokerID.c_str());
-////	strcpy(query.InvestorID, this->userID.c_str());
-////	strcpy(query.AccountID, this->userID.c_str());
-//	strcpy(query.UserID, this->userID.c_str());
-//	strcpy(query.Password, "111203");
-//	query.TradeAmount = amount;
-//	m_pTradeApi->ReqFundOutCTPAccount(&query, ++m_sRequestID);
-//}
-//
-//void Trader::OnRspFundOutCTPAccount(CSecurityFtdcRspFundIOCTPAccountField *pRspFundIOCTPAccount, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
-//{
-//	cerr << "--->>> OnRspFundOutCTPAccount" << endl;
-//	IsErrorRspInfo(pRspInfo);
-//}
 

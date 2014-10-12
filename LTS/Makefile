@@ -10,4 +10,4 @@ wrap: *.cpp *.h *.swig
 	g++ -shared trader_wrap.o trader.o -o _trader.so -lsecuritytraderapi -L./api
 
 clean:
-	rm *.o *.so *.cxx *.pyc datafeeder.py trader.py
+	rm *.o *.so *.cxx datafeeder.py trader.py
