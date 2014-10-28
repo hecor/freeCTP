@@ -12,12 +12,12 @@ using namespace std;
 class Trader : public CZQThostFtdcTraderSpi
 {
 public:
-	Trader(string front_address, string brokerID, string userID, string passwd){
+	Trader(string front_address, string brokerID, string userID, string passwd, string tmpPath){
 		this->front_address = front_address;
 		this->brokerID = brokerID;
 		this->userID = userID;
 		this->passwd = passwd;
-		m_pTradeApi = CZQThostFtdcTraderApi::CreateFtdcTraderApi("/tmp/CTP_tradedata/");
+		m_pTradeApi = CZQThostFtdcTraderApi::CreateFtdcTraderApi(tmpPath.c_str());
 		this->init();
 		this->ExchangeIDDict["sh"] = "SSE";
 		this->ExchangeIDDict["sz"] = "SZE";

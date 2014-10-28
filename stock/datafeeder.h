@@ -12,12 +12,12 @@ using namespace _LEVEL2_;
 class DataFeeder : public CThostFtdcLevel2UserSpi
 {
 public:
-    DataFeeder(std::string front_address, std::string brokerID, std::string userID, std::string passwd){
+    DataFeeder(std::string front_address, std::string brokerID, std::string userID, std::string passwd, std::string tmpPath){
         this->front_address = front_address;
         this->brokerID = brokerID;
         this->userID = userID;
         this->passwd = passwd;
-        this->m_pLevel2Api = CThostFtdcLevel2UserApi::CreateFtdcLevel2UserApi("/tmp/CTP_L2data/");
+        this->m_pLevel2Api = CThostFtdcLevel2UserApi::CreateFtdcLevel2UserApi(tmpPath.c_str());
         this->init();
         this->ExchangeIDDict["sh"] = "SSE";
         this->ExchangeIDDict["sz"] = "SZE";

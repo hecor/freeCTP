@@ -12,12 +12,12 @@ using namespace std;
 class DataFeeder : public CThostFtdcMdSpi
 {
 public:
-    DataFeeder(string front_address, string brokerID, string userID, string passwd){
+    DataFeeder(string front_address, string brokerID, string userID, string passwd, string tmpPath){
         this->front_address = front_address;
         this->brokerID = brokerID;
         this->userID = userID;
         this->passwd = passwd;
-        this->m_pMdApi = CThostFtdcMdApi::CreateFtdcMdApi("/tmp/CTP_future_data/");
+        this->m_pMdApi = CThostFtdcMdApi::CreateFtdcMdApi(tmpPath.c_str());
         this->init();
     }
 

@@ -11,12 +11,12 @@ using namespace std;
 class DataFeeder : public CSecurityFtdcMdSpi
 {
 public:
-    DataFeeder(string front_address, string brokerID, string userID, string passwd){
+    DataFeeder(string front_address, string brokerID, string userID, string passwd, string tmpPath){
         this->front_address = front_address;
         this->brokerID = brokerID;
         this->userID = userID;
         this->passwd = passwd;
-        this->m_pMdApi = CSecurityFtdcMdApi::CreateFtdcMdApi("/tmp/CTP_LTS_data/");
+        this->m_pMdApi = CSecurityFtdcMdApi::CreateFtdcMdApi(tmpPath.c_str());
         this->init();
         this->ExchangeIDDict["sh"] = "SSE";
         this->ExchangeIDDict["sz"] = "SZE";

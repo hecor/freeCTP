@@ -12,12 +12,12 @@ using namespace std;
 class Trader : public CThostFtdcTraderSpi
 {
 public:
-	Trader(string front_address, string brokerID, string userID, string passwd){
+	Trader(string front_address, string brokerID, string userID, string passwd, string tmpPath){
 		this->front_address = front_address;
 		this->brokerID = brokerID;
 		this->userID = userID;
 		this->passwd = passwd;
-		m_pTradeApi = CThostFtdcTraderApi::CreateFtdcTraderApi("/tmp/CTP_future_data/");
+		m_pTradeApi = CThostFtdcTraderApi::CreateFtdcTraderApi(tmpPath.c_str());
 		this->init();
 		m_pTradeApi->SubscribePrivateTopic(THOST_TERT_RESUME);
 		m_pTradeApi->SubscribePublicTopic(THOST_TERT_RESUME);
