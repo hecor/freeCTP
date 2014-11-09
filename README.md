@@ -10,11 +10,6 @@ Install:
 
 **Remember to change to PYTHON library path in scripts and export command**
 
-**Remember to create two dirs in /tmp before you run pzyctp.**
-* if you use ctp for stock: ("/tmp/CTP_L2data/" and "/tmp/CTP_tradedata/")
-* if you use ctp for future: ("/tmp/CTP_future_data/" and "/tmp/CTP_future_trade")
-* if you use ctp for LTS: ("/tmp/CTP_LTS_data/" and "/tmp/CTP_LTS_trade/")
-
 
 Format of market data:
 =============================
