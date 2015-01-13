@@ -5,6 +5,8 @@
 #include <map>
 #include "./api/SecurityFtdcMdApi.h"
 #include "./api/SecurityFtdcUserApiStruct.h"
+#include "../include/rapidjson/writer.h"
+#include "../include/rapidjson/stringbuffer.h"
 
 using namespace std;
 

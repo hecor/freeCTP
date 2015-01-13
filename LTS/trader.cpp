@@ -27,31 +27,46 @@ void Trader::OnFrontConnected()
 
 void Trader::OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
-	cerr << "--->>> OnRspUserLogin" << endl;
-	IsErrorRspInfo(pRspInfo);
+	IsErrorRspInfo("login", pRspInfo, nRequestID);
 }
 
-bool Trader::IsErrorRspInfo(CSecurityFtdcRspInfoField *pRspInfo)
+void Trader::appendRspInfo(string command, int ErrorID, string ErrorMsg, int nRequestID)
+{
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+	writer.StartObject();
+	writer.String("command");
+	writer.String(command.c_str());
+	writer.String("ErrorID");
+	writer.Int(ErrorID);
+	writer.String("ErrorMsg");
+	writer.String(ErrorMsg.c_str());
+	writer.String("RequestID");
+	writer.Int(nRequestID);
+	writer.EndObject();
+	this->rsp_infos.push_back( s.GetString() );
+}
+
+bool Trader::IsErrorRspInfo(string command, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID)
 {
 	bool bResult = ((pRspInfo) && (pRspInfo->ErrorID != 0));
-	if (bResult){
-		cerr << "------>>>>>> ErrorID=" << pRspInfo->ErrorID << ", ErrorMsg=" << pRspInfo->ErrorMsg << endl;
-		this->error_msg = pRspInfo->ErrorMsg;
-	}
+	if (bResult)
+		this->appendRspInfo(command, pRspInfo->ErrorID, pRspInfo->ErrorMsg, nRequestID);
+
 	return bResult;
 }
 
-void Trader::buy(string stockid, string limit_price, int amount)
+int Trader::buy(string stockid, string limit_price, int amount)
 {
-	this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, SECURITY_FTDC_D_Buy);
+	return this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, SECURITY_FTDC_D_Buy);
 }
 
-void Trader::sell(string stockid, string limit_price, int amount)
+int Trader::sell(string stockid, string limit_price, int amount)
 {
-	this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, SECURITY_FTDC_D_Sell);
+	return this->trade(stockid.substr(2), this->ExchangeIDDict[stockid.substr(0,2)], limit_price, amount, SECURITY_FTDC_D_Sell);
 }
 
-void Trader::trade(string stockID, string exchangeID, string limit_price, int amount, TSecurityFtdcDirectionType direction)
+int Trader::trade(string stockID, string exchangeID, string limit_price, int amount, TSecurityFtdcDirectionType direction)
 {
 	CSecurityFtdcInputOrderField req;
 	memset(&req, 0, sizeof(req));
@@ -83,29 +98,47 @@ void Trader::trade(string stockID, string exchangeID, string limit_price, int am
 	req.RequestID = ++m_sRequestID;
 	
 	m_pTradeApi->ReqOrderInsert(&req, m_sRequestID);
+	return m_sRequestID;
 }
 
 void Trader::OnRspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
 	// 输出报单录入结果
-	cout << "--->>> OnRspOrderInsert" << endl;
-	IsErrorRspInfo(pRspInfo);
+	IsErrorRspInfo("OrderInsert", pRspInfo, nRequestID);
 }
 
 void Trader::OnRtnTrade(CSecurityFtdcTradeField *pTrade)
 {
-	cerr << "--->>> Trade notification: \n" << pTrade->InstrumentID << '\t' << pTrade->Direction << '\t' << pTrade->Price << '\t' << pTrade->Volume << '\t' << pTrade->TradeDate << ' ' << pTrade->TradeTime << endl;
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+	writer.StartObject();
+	writer.String("command");
+	writer.String("trade");
+	writer.String("InstrumentID");
+	writer.String(pTrade->InstrumentID);
+	writer.String("Direction");
+	writer.Int(pTrade->Direction);
+	writer.String("Price");
+	writer.Double(atof(pTrade->Price));
+	writer.String("Volume");
+	writer.Int(pTrade->Volume);
+	writer.String("Date");
+	writer.String(pTrade->TradeDate);
+	writer.String("Time");
+	writer.String(pTrade->TradeTime);
+	writer.EndObject();
+	this->rsp_infos.push_back( s.GetString() );
 }
 
 void Trader::OnRtnOrder(CSecurityFtdcOrderField *pOrder)
 {
-	cerr << "--->>> Order Return notification: " << pOrder->InstrumentID << '\t' << pOrder->LimitPrice << '\t' << pOrder->VolumeTraded << endl;
+//	cerr << "--->>> Order Return notification: " << pOrder->InstrumentID << '\t' << pOrder->LimitPrice << '\t' << pOrder->VolumeTraded << endl;
 }
 
 // 针对用户请求的出错通知
 void Trader::OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
-	cerr << "--->>> OnRspError" << endl;
-	IsErrorRspInfo(pRspInfo);
+//	cerr << "--->>> OnRspError" << endl;
+	IsErrorRspInfo("unknown", pRspInfo, nRequestID);
 }
 
 void Trader::update_position_info()
@@ -117,11 +150,6 @@ void Trader::update_position_info()
 	strcpy(query.BrokerID, this->brokerID.c_str());
 	strcpy(query.InvestorID, this->userID.c_str());
 	m_pTradeApi->ReqQryInvestorPosition(&query, ++m_sRequestID);
-}
-
-map< string, int > Trader::get_position_info()
-{
-	return this->position_info;
 }
 
 void Trader::OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInvestorPosition, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
@@ -140,11 +168,6 @@ void Trader::update_account_info()
 	strcpy(query.BrokerID, this->brokerID.c_str());
 	strcpy(query.InvestorID, this->userID.c_str());
 	m_pTradeApi->ReqQryTradingAccount(&query, ++m_sRequestID);
-}
-
-map< string, double > Trader::get_account_info()
-{
-	return this->account_info;
 }
 
 void Trader::OnRspQryTradingAccount(CSecurityFtdcTradingAccountField *pTradingAccount, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
@@ -170,11 +193,6 @@ void Trader::update_trade_records()
 	strcpy(query.BrokerID, this->brokerID.c_str());
 	strcpy(query.InvestorID, this->userID.c_str());
 	m_pTradeApi->ReqQryTrade(&query, ++m_sRequestID);
-}
-
-vector< string > Trader::get_trade_records()
-{
-	return this->trade_records;
 }
 
 void Trader::OnRspQryTrade(CSecurityFtdcTradeField *pTrade, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)

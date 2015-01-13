@@ -6,8 +6,12 @@
 #include <map>
 #include "./api/SecurityFtdcTraderApi.h"
 #include "./api/SecurityFtdcUserApiDataType.h"
+#include "../include/rapidjson/writer.h"
+#include "../include/rapidjson/stringbuffer.h"
+
 
 using namespace std;
+
 
 class Trader : public CSecurityFtdcTraderSpi
 {
@@ -31,17 +35,16 @@ public:
 		m_pTradeApi->Release();
 	}
 
-	void buy(string stockid, string limit_price, int amount);
-	void sell(string stockid, string limit_price, int amount);
+	int buy(string stockid, string limit_price, int amount);
+	int sell(string stockid, string limit_price, int amount);
 	void update_position_info();
-	map< string, int > get_position_info();
+	map< string, int > get_position_info() { return this->position_info; }
 	void update_account_info();
-	map< string, double > get_account_info();
+	map< string, double > get_account_info() { return this->account_info; }
 	void update_trade_records();
-	vector< string > get_trade_records();
+	vector< string > get_trade_records() { return this->trade_records; }
+	vector< string > get_rsp_infos() { return this->rsp_infos; }
 
-	bool IsErrorRspInfo(CSecurityFtdcRspInfoField *pRspInfo);
-	string get_error_msg(){ return error_msg; }
 
 private:
 	static int m_sRequestID;
@@ -56,11 +59,14 @@ private:
 	map< string, double > account_info;
 	map< string, int > position_info;
 	vector< string > trade_records;
-	string error_msg;
+	vector< string > rsp_infos;
+
+	bool IsErrorRspInfo(string command, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID);
+	void appendRspInfo(string command, int ErrorID, string ErrorMsg, int nRequestID);
 
 	void init();
 	void OnFrontConnected();
-	void trade(string stockID, string exchangeID, string limit_price, int amount, TSecurityFtdcDirectionType direction);
+	int trade(string stockID, string exchangeID, string limit_price, int amount, TSecurityFtdcDirectionType direction);
 
 	void OnRtnOrder(CSecurityFtdcOrderField *pOrder);
 	void OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);

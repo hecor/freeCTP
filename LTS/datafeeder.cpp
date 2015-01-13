@@ -42,18 +42,62 @@ void DataFeeder::subscrib_market_data(string stockid)
 
 void DataFeeder::OnRtnDepthMarketData(CSecurityFtdcDepthMarketDataField *pDepthMarketData)
 {
-	ostringstream oss;
 	CSecurityFtdcDepthMarketDataField *p = pDepthMarketData;
 	string stockid = this->ExchangeIDDict_Reverse[p->ExchangeID] + p->InstrumentID;
 
-	oss << stockid << ',' << p->TradingDay << ',' << p->UpdateTime << ','
-		<< p->LastPrice << ',' << p->PreClosePrice << ',' << p->OpenPrice << ',' << p->ClosePrice << ',' << p->HighestPrice << ',' << p->LowestPrice << ',' 
-		<< p->Volume << ',' << p->Turnover << ',' 
-		<< p->BidPrice1 << ',' << p->BidVolume1 << ',' << p->BidPrice2 << ',' << p->BidVolume2 << ',' << p->BidPrice3 << ',' << p->BidVolume3 << ',' 
-		<< p->AskPrice1 << ',' << p->AskVolume1 << ',' << p->AskPrice2 << ',' << p->AskVolume2 << ',' << p->AskPrice3 << ',' << p->AskVolume3 << ',';
-		
-	stock_datas[stockid] = oss.str();
-//	cout << stock_datas[stockid] << endl;
+	rapidjson::StringBuffer s;
+	rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+	writer.StartObject();
+
+	writer.String("id");
+	writer.String(stockid.c_str());
+	writer.String("date");
+	writer.String(p->TradingDay);
+	writer.String("time");
+	writer.String(p->UpdateTime);
+	writer.String("current_price");
+	writer.Double(p->LastPrice);
+	writer.String("yesterday_close_price");
+	writer.Double(p->PreClosePrice);
+	writer.String("today_open_price");
+	writer.Double(p->OpenPrice);
+	writer.String("today_close_price");
+	writer.Double(p->ClosePrice);
+	writer.String("today_highest_price");
+	writer.Double(p->HighestPrice);
+	writer.String("today_lowest_price");
+	writer.Double(p->LowestPrice);
+	writer.String("volume");
+	writer.Int(p->Volume);
+	writer.String("turnover");
+	writer.Double(p->Turnover);
+	writer.String("buy_1_price");
+	writer.Double(p->BidPrice1);
+	writer.String("buy_1_amount");
+	writer.Int(p->BidVolume1);
+	writer.String("buy_2_price");
+	writer.Double(p->BidPrice2);
+	writer.String("buy_2_amount");
+	writer.Int(p->BidVolume2);
+	writer.String("buy_3_price");
+	writer.Double(p->BidPrice3);
+	writer.String("buy_3_amount");
+	writer.Int(p->BidVolume3);
+	writer.String("sell_1_price");
+	writer.Double(p->AskPrice1);
+	writer.String("sell_1_amount");
+	writer.Int(p->AskVolume1);
+	writer.String("sell_2_price");
+	writer.Double(p->AskPrice2);
+	writer.String("sell_2_amount");
+	writer.Int(p->AskVolume2);
+	writer.String("sell_3_price");
+	writer.Double(p->AskPrice3);
+	writer.String("sell_3_amount");
+	writer.Int(p->AskVolume3);
+
+	writer.EndObject();
+	stock_datas[stockid] = s.GetString();
 }
 
 string DataFeeder::get_market_data(string stockid)
