@@ -61,7 +61,7 @@ private:
 	vector< string > trade_records;
 	vector< string > rsp_infos;
 
-	bool IsErrorRspInfo(string command, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID);
+	bool isErrorRspInfo(string command, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID);
 	void appendRspInfo(string command, int ErrorID, string ErrorMsg, int nRequestID);
 
 	void init();

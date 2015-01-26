@@ -1,3 +1,11 @@
+cd LTS
+make
+cd ../future
+make
+cd ../stock
+make
+
+cd ..
 
 if [ -d "./pzyctp" ] ; then
 	rm -rf pzyctp

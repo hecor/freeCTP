@@ -27,7 +27,7 @@ void Trader::OnFrontConnected()
 
 void Trader::OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
-	IsErrorRspInfo("login", pRspInfo, nRequestID);
+	isErrorRspInfo("login", pRspInfo, nRequestID);
 }
 
 void Trader::appendRspInfo(string command, int ErrorID, string ErrorMsg, int nRequestID)
@@ -44,10 +44,11 @@ void Trader::appendRspInfo(string command, int ErrorID, string ErrorMsg, int nRe
 	writer.String("RequestID");
 	writer.Int(nRequestID);
 	writer.EndObject();
+	cout << s.GetString() << endl;
 	this->rsp_infos.push_back( s.GetString() );
 }
 
-bool Trader::IsErrorRspInfo(string command, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID)
+bool Trader::isErrorRspInfo(string command, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID)
 {
 	bool bResult = ((pRspInfo) && (pRspInfo->ErrorID != 0));
 	if (bResult)
@@ -103,7 +104,7 @@ int Trader::trade(string stockID, string exchangeID, string limit_price, int amo
 
 void Trader::OnRspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
 	// 输出报单录入结果
-	IsErrorRspInfo("OrderInsert", pRspInfo, nRequestID);
+	isErrorRspInfo("OrderInsert", pRspInfo, nRequestID);
 }
 
 void Trader::OnRtnTrade(CSecurityFtdcTradeField *pTrade)
@@ -116,7 +117,10 @@ void Trader::OnRtnTrade(CSecurityFtdcTradeField *pTrade)
 	writer.String("InstrumentID");
 	writer.String(pTrade->InstrumentID);
 	writer.String("Direction");
-	writer.Int(pTrade->Direction);
+	if (pTrade->Direction == '0')
+		writer.String("buy");
+	else
+		writer.String("sell");
 	writer.String("Price");
 	writer.Double(atof(pTrade->Price));
 	writer.String("Volume");
@@ -126,6 +130,7 @@ void Trader::OnRtnTrade(CSecurityFtdcTradeField *pTrade)
 	writer.String("Time");
 	writer.String(pTrade->TradeTime);
 	writer.EndObject();
+	cout << s.GetString() << endl;
 	this->rsp_infos.push_back( s.GetString() );
 }
 
@@ -138,7 +143,7 @@ void Trader::OnRtnOrder(CSecurityFtdcOrderField *pOrder)
 void Trader::OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 //	cerr << "--->>> OnRspError" << endl;
-	IsErrorRspInfo("unknown", pRspInfo, nRequestID);
+	isErrorRspInfo("unknown", pRspInfo, nRequestID);
 }
 
 void Trader::update_position_info()
