@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////
 ///@company shanghai liber information Technology Co.,Ltd
 ///@file SecurityFtdcUserApiStruct.h
-///@brief å®šä¹‰ä¸šåŠ¡æ•°æ®ç»“æ„
+///@brief ¶¨ÒåÒµÎñÊı¾İ½á¹¹
 /////////////////////////////////////////////////////////////////////////
 
 #if !defined(SECURITY_FTDCSTRUCT_H)
@@ -13,2032 +13,2559 @@
 
 #include "SecurityFtdcUserApiDataType.h"
 
-///å“åº”ä¿¡æ¯
+///ÏìÓ¦ĞÅÏ¢
 struct CSecurityFtdcRspInfoField
 {
-	///é”™è¯¯ä»£ç 
+	///´íÎó´úÂë
 	TSecurityFtdcErrorIDType	ErrorID;
-	///é”™è¯¯ä¿¡æ¯
+	///´íÎóĞÅÏ¢
 	TSecurityFtdcErrorMsgType	ErrorMsg;
 };
 
-///äº¤æ˜“æ‰€
+///½»Ò×Ëù
 struct CSecurityFtdcExchangeField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///äº¤æ˜“æ‰€åç§°
+	///½»Ò×ËùÃû³Æ
 	TSecurityFtdcExchangeNameType	ExchangeName;
-	///äº¤æ˜“æ‰€å±æ€§
+	///½»Ò×ËùÊôĞÔ
 	TSecurityFtdcExchangePropertyType	ExchangeProperty;
 };
 
-///äº§å“
+///²úÆ·
 struct CSecurityFtdcProductField
 {
-	///äº§å“ä»£ç 
+	///²úÆ·´úÂë
 	TSecurityFtdcInstrumentIDType	ProductID;
-	///äº§å“åç§°
+	///²úÆ·Ãû³Æ
 	TSecurityFtdcProductNameType	ProductName;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///äº§å“ç±»å‹
+	///²úÆ·ÀàĞÍ
 	TSecurityFtdcProductClassType	ProductClass;
-	///åˆçº¦æ•°é‡ä¹˜æ•°
+	///ºÏÔ¼ÊıÁ¿³ËÊı
 	TSecurityFtdcVolumeMultipleType	VolumeMultiple;
-	///æœ€å°å˜åŠ¨ä»·ä½
+	///×îĞ¡±ä¶¯¼ÛÎ»
 	TSecurityFtdcPriceType	PriceTick;
-	///å¸‚ä»·å•æœ€å¤§ä¸‹å•é‡
+	///ÊĞ¼Ûµ¥×î´óÏÂµ¥Á¿
 	TSecurityFtdcVolumeType	MaxMarketOrderVolume;
-	///å¸‚ä»·å•æœ€å°ä¸‹å•é‡
+	///ÊĞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
 	TSecurityFtdcVolumeType	MinMarketOrderVolume;
-	///é™ä»·å•æœ€å¤§ä¸‹å•é‡
+	///ÏŞ¼Ûµ¥×î´óÏÂµ¥Á¿
 	TSecurityFtdcVolumeType	MaxLimitOrderVolume;
-	///é™ä»·å•æœ€å°ä¸‹å•é‡
+	///ÏŞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
 	TSecurityFtdcVolumeType	MinLimitOrderVolume;
-	///æŒä»“ç±»å‹
+	///³Ö²ÖÀàĞÍ
 	TSecurityFtdcPositionTypeType	PositionType;
-	///æŒä»“æ—¥æœŸç±»å‹
+	///³Ö²ÖÈÕÆÚÀàĞÍ
 	TSecurityFtdcPositionDateTypeType	PositionDateType;
-	///ETFæœ€å°äº¤æ˜“å•ä½
+	///ETF×îĞ¡½»Ò×µ¥Î»
 	TSecurityFtdcVolumeType	EFTMinTradeVolume;
 };
 
-///åˆçº¦
+///ºÏÔ¼
 struct CSecurityFtdcInstrumentField
 {
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///åˆçº¦åç§°
+	///ºÏÔ¼Ãû³Æ
 	TSecurityFtdcInstrumentNameType	InstrumentName;
-	///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
 	TSecurityFtdcExchangeInstIDType	ExchangeInstID;
-	///äº§å“ä»£ç 
+	///²úÆ·´úÂë
 	TSecurityFtdcInstrumentIDType	ProductID;
-	///äº§å“ç±»å‹
+	///²úÆ·ÀàĞÍ
 	TSecurityFtdcProductClassType	ProductClass;
-	///äº¤å‰²å¹´ä»½
+	///½»¸îÄê·İ
 	TSecurityFtdcYearType	DeliveryYear;
-	///äº¤å‰²æœˆ
+	///½»¸îÔÂ
 	TSecurityFtdcMonthType	DeliveryMonth;
-	///å¸‚ä»·å•æœ€å¤§ä¸‹å•é‡
+	///ÊĞ¼Ûµ¥×î´óÏÂµ¥Á¿
 	TSecurityFtdcVolumeType	MaxMarketOrderVolume;
-	///å¸‚ä»·å•æœ€å°ä¸‹å•é‡
+	///ÊĞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
 	TSecurityFtdcVolumeType	MinMarketOrderVolume;
-	///é™ä»·å•æœ€å¤§ä¸‹å•é‡
+	///ÏŞ¼Ûµ¥×î´óÏÂµ¥Á¿
 	TSecurityFtdcVolumeType	MaxLimitOrderVolume;
-	///é™ä»·å•æœ€å°ä¸‹å•é‡
+	///ÏŞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
 	TSecurityFtdcVolumeType	MinLimitOrderVolume;
-	///åˆçº¦æ•°é‡ä¹˜æ•°
+	///ºÏÔ¼ÊıÁ¿³ËÊı
 	TSecurityFtdcVolumeMultipleType	VolumeMultiple;
-	///æœ€å°å˜åŠ¨ä»·ä½
+	///×îĞ¡±ä¶¯¼ÛÎ»
 	TSecurityFtdcPriceType	PriceTick;
-	///åˆ›å»ºæ—¥
+	///´´½¨ÈÕ
 	TSecurityFtdcDateType	CreateDate;
-	///ä¸Šå¸‚æ—¥
+	///ÉÏÊĞÈÕ
 	TSecurityFtdcDateType	OpenDate;
-	///åˆ°æœŸæ—¥
+	///µ½ÆÚÈÕ
 	TSecurityFtdcDateType	ExpireDate;
-	///å¼€å§‹äº¤å‰²æ—¥
+	///¿ªÊ¼½»¸îÈÕ
 	TSecurityFtdcDateType	StartDelivDate;
-	///ç»“æŸäº¤å‰²æ—¥
+	///½áÊø½»¸îÈÕ
 	TSecurityFtdcDateType	EndDelivDate;
-	///åˆçº¦ç”Ÿå‘½å‘¨æœŸçŠ¶æ€
+	///ºÏÔ¼ÉúÃüÖÜÆÚ×´Ì¬
 	TSecurityFtdcInstLifePhaseType	InstLifePhase;
-	///å½“å‰æ˜¯å¦äº¤æ˜“
+	///µ±Ç°ÊÇ·ñ½»Ò×
 	TSecurityFtdcBoolType	IsTrading;
-	///æŒä»“ç±»å‹
+	///³Ö²ÖÀàĞÍ
 	TSecurityFtdcPositionTypeType	PositionType;
-	///æŠ¥å•èƒ½å¦æ’¤å•
+	///±¨µ¥ÄÜ·ñ³·µ¥
 	TSecurityFtdcBoolType	OrderCanBeWithdraw;
-	///æœ€å°ä¹°ä¸‹å•å•ä½
+	///×îĞ¡ÂòÏÂµ¥µ¥Î»
 	TSecurityFtdcVolumeType	MinBuyVolume;
-	///æœ€å°å–ä¸‹å•å•ä½
+	///×îĞ¡ÂôÏÂµ¥µ¥Î»
 	TSecurityFtdcVolumeType	MinSellVolume;
-	///è‚¡ç¥¨æƒé™æ¨¡ç‰ˆä»£ç 
+	///¹ÉÆ±È¨ÏŞÄ£°æ´úÂë
 	TSecurityFtdcRightModelIDType	RightModelID;
-	///æŒä»“äº¤æ˜“ç±»å‹
+	///³Ö²Ö½»Ò×ÀàĞÍ
 	TSecurityFtdcPosTradeTypeType	PosTradeType;
-	///å¸‚åœºä»£ç 
+	///ÊĞ³¡´úÂë
 	TSecurityFtdcInstrumentIDType	MarketID;
+	///ÆÚÈ¨Ö´ĞĞ¼Û¸ñ
+	TSecurityFtdcPriceType	ExecPrice;
+	///ÆÚÈ¨µ¥ÊÖ±£Ö¤½ğ
+	TSecurityFtdcMoneyType	UnitMargin;
+	///ºÏÔ¼ÀàĞÍ
+	TSecurityFtdcInstrumentTypeType	InstrumentType;
+	///ÆÚÈ¨±£Ö¤½ğ²ÎÊı1
+	TSecurityFtdcRatioType	OptionsMarginParam1;
+	///ÆÚÈ¨±£Ö¤½ğ²ÎÊı2
+	TSecurityFtdcRatioType	OptionsMarginParam2;
 };
 
-///ç»çºªå…¬å¸
+///¾­¼Í¹«Ë¾
 struct CSecurityFtdcBrokerField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç»çºªå…¬å¸ç®€ç§°
+	///¾­¼Í¹«Ë¾¼ò³Æ
 	TSecurityFtdcBrokerAbbrType	BrokerAbbr;
-	///ç»çºªå…¬å¸åç§°
+	///¾­¼Í¹«Ë¾Ãû³Æ
 	TSecurityFtdcBrokerNameType	BrokerName;
-	///æ˜¯å¦æ´»è·ƒ
+	///ÊÇ·ñ»îÔ¾
 	TSecurityFtdcBoolType	IsActive;
 };
 
-///ä¼šå‘˜ç¼–ç å’Œç»çºªå…¬å¸ç¼–ç å¯¹ç…§è¡¨
+///»áÔ±±àÂëºÍ¾­¼Í¹«Ë¾±àÂë¶ÔÕÕ±í
 struct CSecurityFtdcPartBrokerField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///æ˜¯å¦æ´»è·ƒ
+	///ÊÇ·ñ»îÔ¾
 	TSecurityFtdcBoolType	IsActive;
 };
 
-///æŠ•èµ„è€…
+///Í¶×ÊÕß
 struct CSecurityFtdcInvestorField
 {
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…åˆ†ç»„ä»£ç 
+	///Í¶×ÊÕß·Ö×é´úÂë
 	TSecurityFtdcInvestorIDType	InvestorGroupID;
-	///æŠ•èµ„è€…åç§°
+	///Í¶×ÊÕßÃû³Æ
 	TSecurityFtdcPartyNameType	InvestorName;
-	///è¯ä»¶ç±»å‹
+	///Ö¤¼şÀàĞÍ
 	TSecurityFtdcIdCardTypeType	IdentifiedCardType;
-	///è¯ä»¶å·ç 
+	///Ö¤¼şºÅÂë
 	TSecurityFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///æ˜¯å¦æ´»è·ƒ
+	///ÊÇ·ñ»îÔ¾
 	TSecurityFtdcBoolType	IsActive;
-	///ä¸Šæµ·è¥ä¸šéƒ¨ç¼–å·
+	///ÉÏº£ÓªÒµ²¿±àºÅ
 	TSecurityFtdcTraderIDType	SHBranchID;
-	///æ·±åœ³è¥ä¸šéƒ¨ç¼–å·
+	///ÉîÛÚÓªÒµ²¿±àºÅ
 	TSecurityFtdcTraderIDType	SZBranchID;
+	///ËùÊô½áËãÏµÍ³ÀàĞÍ
+	TSecurityFtdcSettleSystemTypeType	SettleSystemType;
+	///Í¶×ÊÕßÆÚÈ¨½»Ò×µÈ¼¶
+	TSecurityFtdcInvestorLevelType	InvestorLevel;
 };
 
-///äº¤æ˜“ç¼–ç 
+///½»Ò×±àÂë
 struct CSecurityFtdcTradingCodeField
 {
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///å®¢æˆ·ä»£ç 
+	///¿Í»§´úÂë
 	TSecurityFtdcClientIDType	ClientID;
-	///æ˜¯å¦æ´»è·ƒ
+	///ÊÇ·ñ»îÔ¾
 	TSecurityFtdcBoolType	IsActive;
 	///AccountID
 	TSecurityFtdcAccountIDType	AccountID;
-	///äº¤æ˜“å•å…ƒå·
+	///½»Ò×µ¥ÔªºÅ
 	TSecurityFtdcTraderIDType	PBU;
 	///ClientType
 	TSecurityFtdcClientTypeType	ClientType;
 };
 
-///ç®¡ç†ç”¨æˆ·
+///¹ÜÀíÓÃ»§
 struct CSecurityFtdcSuperUserField
 {
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///ç”¨æˆ·åç§°
+	///ÓÃ»§Ãû³Æ
 	TSecurityFtdcUserNameType	UserName;
-	///å¯†ç 
+	///ÃÜÂë
 	TSecurityFtdcPasswordType	Password;
-	///æ˜¯å¦æ´»è·ƒ
+	///ÊÇ·ñ»îÔ¾
 	TSecurityFtdcBoolType	IsActive;
 };
 
-///ç®¡ç†ç”¨æˆ·åŠŸèƒ½æƒé™
+///¹ÜÀíÓÃ»§¹¦ÄÜÈ¨ÏŞ
 struct CSecurityFtdcSuperUserFunctionField
 {
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///åŠŸèƒ½ä»£ç 
+	///¹¦ÄÜ´úÂë
 	TSecurityFtdcFunctionCodeType	FunctionCode;
 };
 
-///ç»çºªå…¬å¸ç”¨æˆ·
+///¾­¼Í¹«Ë¾ÓÃ»§
 struct CSecurityFtdcBrokerUserField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///ç”¨æˆ·åç§°
+	///ÓÃ»§Ãû³Æ
 	TSecurityFtdcUserNameType	UserName;
-	///ç”¨æˆ·ç±»å‹
+	///ÓÃ»§ÀàĞÍ
 	TSecurityFtdcUserTypeType	UserType;
-	///æ˜¯å¦æ´»è·ƒ
+	///ÊÇ·ñ»îÔ¾
 	TSecurityFtdcBoolType	IsActive;
-	///æ˜¯å¦ä½¿ç”¨ä»¤ç‰Œ
+	///ÊÇ·ñÊ¹ÓÃÁîÅÆ
 	TSecurityFtdcBoolType	IsUsingOTP;
 };
 
-///ç»çºªå…¬å¸ç”¨æˆ·åŠŸèƒ½æƒé™
+///¾­¼Í¹«Ë¾ÓÃ»§¹¦ÄÜÈ¨ÏŞ
 struct CSecurityFtdcBrokerUserFunctionField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///ç»çºªå…¬å¸åŠŸèƒ½ä»£ç 
+	///¾­¼Í¹«Ë¾¹¦ÄÜ´úÂë
 	TSecurityFtdcBrokerFunctionCodeType	BrokerFunctionCode;
 };
 
-///èµ„é‡‘è´¦æˆ·
+///×Ê½ğÕË»§
 struct CSecurityFtdcTradingAccountField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…å¸å·
+	///Í¶×ÊÕßÕÊºÅ
 	TSecurityFtdcAccountIDType	AccountID;
-	///ä¸Šæ¬¡è´¨æŠ¼é‡‘é¢
+	///ÉÏ´ÎÖÊÑº½ğ¶î
 	TSecurityFtdcMoneyType	PreMortgage;
-	///ä¸Šæ¬¡ä¿¡ç”¨é¢åº¦
+	///ÉÏ´ÎĞÅÓÃ¶î¶È
 	TSecurityFtdcMoneyType	PreCredit;
-	///ä¸Šæ¬¡å­˜æ¬¾é¢
+	///ÉÏ´Î´æ¿î¶î
 	TSecurityFtdcMoneyType	PreDeposit;
-	///ä¸Šæ¬¡ç»“ç®—å‡†å¤‡é‡‘
+	///ÉÏ´Î½áËã×¼±¸½ğ
 	TSecurityFtdcMoneyType	PreBalance;
-	///ä¸Šæ¬¡å ç”¨çš„ä¿è¯é‡‘
+	///ÉÏ´ÎÕ¼ÓÃµÄ±£Ö¤½ğ
 	TSecurityFtdcMoneyType	PreMargin;
-	///åˆ©æ¯åŸºæ•°
+	///ÀûÏ¢»ùÊı
 	TSecurityFtdcMoneyType	InterestBase;
-	///åˆ©æ¯æ”¶å…¥
+	///ÀûÏ¢ÊÕÈë
 	TSecurityFtdcMoneyType	Interest;
-	///å…¥é‡‘é‡‘é¢
+	///Èë½ğ½ğ¶î
 	TSecurityFtdcMoneyType	Deposit;
-	///å‡ºé‡‘é‡‘é¢
+	///³ö½ğ½ğ¶î
 	TSecurityFtdcMoneyType	Withdraw;
-	///å†»ç»“çš„ä¿è¯é‡‘
+	///¶³½áµÄ±£Ö¤½ğ
 	TSecurityFtdcMoneyType	FrozenMargin;
-	///å†»ç»“çš„èµ„é‡‘
+	///¶³½áµÄ×Ê½ğ
 	TSecurityFtdcMoneyType	FrozenCash;
-	///å†»ç»“çš„æ‰‹ç»­è´¹
+	///¶³½áµÄÊÖĞø·Ñ
 	TSecurityFtdcMoneyType	FrozenCommission;
-	///å½“å‰ä¿è¯é‡‘æ€»é¢
+	///µ±Ç°±£Ö¤½ğ×Ü¶î
 	TSecurityFtdcMoneyType	CurrMargin;
-	///èµ„é‡‘å·®é¢
+	///×Ê½ğ²î¶î
 	TSecurityFtdcMoneyType	CashIn;
-	///æ‰‹ç»­è´¹
+	///ÊÖĞø·Ñ
 	TSecurityFtdcMoneyType	Commission;
-	///ç»“ç®—å‡†å¤‡é‡‘
+	///½áËã×¼±¸½ğ
 	TSecurityFtdcMoneyType	Balance;
-	///ç°é‡‘
+	///ÏÖ½ğ
 	TSecurityFtdcMoneyType	Available;
-	///å¯å–èµ„é‡‘
+	///¿ÉÈ¡×Ê½ğ
 	TSecurityFtdcMoneyType	WithdrawQuota;
-	///åŸºæœ¬å‡†å¤‡é‡‘
+	///»ù±¾×¼±¸½ğ
 	TSecurityFtdcMoneyType	Reserve;
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///ä¿è¯é‡‘å¯ç”¨ä½™é¢
+	///±£Ö¤½ğ¿ÉÓÃÓà¶î
 	TSecurityFtdcMoneyType	Credit;
-	///è´¨æŠ¼é‡‘é¢
+	///ÖÊÑº½ğ¶î
 	TSecurityFtdcMoneyType	Mortgage;
-	///äº¤æ˜“æ‰€ä¿è¯é‡‘
+	///½»Ò×Ëù±£Ö¤½ğ
 	TSecurityFtdcMoneyType	ExchangeMargin;
-	///æŠ•èµ„è€…äº¤å‰²ä¿è¯é‡‘
+	///Í¶×ÊÕß½»¸î±£Ö¤½ğ
 	TSecurityFtdcMoneyType	DeliveryMargin;
-	///äº¤æ˜“æ‰€äº¤å‰²ä¿è¯é‡‘
+	///½»Ò×Ëù½»¸î±£Ö¤½ğ
 	TSecurityFtdcMoneyType	ExchangeDeliveryMargin;
-	///å†»ç»“çš„è¿‡æˆ·è´¹
+	///¶³½áµÄ¹ı»§·Ñ
 	TSecurityFtdcMoneyType	FrozenTransferFee;
-	///å†»ç»“çš„å°èŠ±ç¨
+	///¶³½áµÄÓ¡»¨Ë°
 	TSecurityFtdcMoneyType	FrozenStampTax;
-	///è¿‡æˆ·è´¹
+	///¹ı»§·Ñ
 	TSecurityFtdcMoneyType	TransferFee;
-	///å°èŠ±ç¨
+	///Ó¡»¨Ë°
 	TSecurityFtdcMoneyType	StampTax;
-	///æŠ˜ç®—é‡‘é¢
+	///ÕÛËã½ğ¶î
 	TSecurityFtdcMoneyType	ConversionAmount;
-	///æˆä¿¡é¢åº¦
+	///ÊÚĞÅ¶î¶È
 	TSecurityFtdcMoneyType	CreditAmount;
-	///è¯åˆ¸æ€»ä»·å€¼
+	///Ö¤È¯×Ü¼ÛÖµ
 	TSecurityFtdcMoneyType	StockValue;
-	///å›½å€ºå›è´­å ç”¨èµ„é‡‘
+	///¹úÕ®»Ø¹ºÕ¼ÓÃ×Ê½ğ
 	TSecurityFtdcMoneyType	BondRepurchaseAmount;
-	///å›½å€ºé€†å›è´­å ç”¨èµ„é‡‘
+	///¹úÕ®Äæ»Ø¹ºÕ¼ÓÃ×Ê½ğ
 	TSecurityFtdcMoneyType	ReverseRepurchaseAmount;
-	///å¸ç§
+	///±ÒÖÖ
 	TSecurityFtdcCurrencyCodeType	CurrencyCode;
-	///è´¦æˆ·ç±»å‹
+	///ÕË»§ÀàĞÍ
 	TSecurityFtdcAccountTypeType	AccountType;
-	///èèµ„ä¹°å…¥é‡‘é¢
+	///ÈÚ×ÊÂòÈë½ğ¶î
 	TSecurityFtdcMoneyType	MarginTradeAmount;
-	///èåˆ¸å–å‡ºé‡‘é¢
+	///ÈÚÈ¯Âô³ö½ğ¶î
 	TSecurityFtdcMoneyType	ShortSellAmount;
-	///èèµ„æŒä»“ç›ˆäº
+	///ÈÚ×Ê³Ö²ÖÓ¯¿÷
 	TSecurityFtdcMoneyType	MarginTradeProfit;
-	///èåˆ¸æŒä»“ç›ˆäº
+	///ÈÚÈ¯³Ö²ÖÓ¯¿÷
 	TSecurityFtdcMoneyType	ShortSellProfit;
-	///èåˆ¸æ€»å¸‚å€¼
+	///ÈÚÈ¯×ÜÊĞÖµ
 	TSecurityFtdcMoneyType	SSStockValue;
-	///ç»´æŒæ‹…ä¿æ¯”ä¾‹
+	///Î¬³Öµ£±£±ÈÀı
 	TSecurityFtdcRatioType	CreditRatio;
+	///ĞĞÈ¨¶³½á×Ê½ğ
+	TSecurityFtdcMoneyType	FrozenExecCash;
+	///ÆÚÈ¨ÂòÈë×Ê½ğ(SSE)
+	TSecurityFtdcMoneyType	SSEOptionsBuyAmount;
+	///ÆÚÈ¨ÂòÈë¶³½á×Ê½ğ(SSE)
+	TSecurityFtdcMoneyType	SSEOptionsBuyFrozenAmount;
 };
 
-///ç¦æ­¢ç™»å½•ç”¨æˆ·
+///½ûÖ¹µÇÂ¼ÓÃ»§
 struct CSecurityFtdcLoginForbiddenUserField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///æ·±åº¦è¡Œæƒ…
+///Éî¶ÈĞĞÇé
 struct CSecurityFtdcDepthMarketDataField
 {
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
 	TSecurityFtdcExchangeInstIDType	ExchangeInstID;
-	///æœ€æ–°ä»·
+	///×îĞÂ¼Û
 	TSecurityFtdcPriceType	LastPrice;
-	///ä¸Šæ¬¡ç»“ç®—ä»·
+	///ÉÏ´Î½áËã¼Û
 	TSecurityFtdcPriceType	PreSettlementPrice;
-	///æ˜¨æ”¶ç›˜
+	///×òÊÕÅÌ
 	TSecurityFtdcPriceType	PreClosePrice;
-	///æ˜¨æŒä»“é‡
+	///×ò³Ö²ÖÁ¿
 	TSecurityFtdcLargeVolumeType	PreOpenInterest;
-	///ä»Šå¼€ç›˜
+	///½ñ¿ªÅÌ
 	TSecurityFtdcPriceType	OpenPrice;
-	///æœ€é«˜ä»·
+	///×î¸ß¼Û
 	TSecurityFtdcPriceType	HighestPrice;
-	///æœ€ä½ä»·
+	///×îµÍ¼Û
 	TSecurityFtdcPriceType	LowestPrice;
-	///æ•°é‡
+	///ÊıÁ¿
 	TSecurityFtdcVolumeType	Volume;
-	///æˆäº¤é‡‘é¢
+	///³É½»½ğ¶î
 	TSecurityFtdcMoneyType	Turnover;
-	///æŒä»“é‡
+	///³Ö²ÖÁ¿
 	TSecurityFtdcLargeVolumeType	OpenInterest;
-	///ä»Šæ”¶ç›˜
+	///½ñÊÕÅÌ
 	TSecurityFtdcPriceType	ClosePrice;
-	///æœ¬æ¬¡ç»“ç®—ä»·
+	///±¾´Î½áËã¼Û
 	TSecurityFtdcPriceType	SettlementPrice;
-	///æ¶¨åœæ¿ä»·
+	///ÕÇÍ£°å¼Û
 	TSecurityFtdcPriceType	UpperLimitPrice;
-	///è·Œåœæ¿ä»·
+	///µøÍ£°å¼Û
 	TSecurityFtdcPriceType	LowerLimitPrice;
-	///æ˜¨è™šå®åº¦
+	///×òĞéÊµ¶È
 	TSecurityFtdcRatioType	PreDelta;
-	///ä»Šè™šå®åº¦
+	///½ñĞéÊµ¶È
 	TSecurityFtdcRatioType	CurrDelta;
-	///æœ€åä¿®æ”¹æ—¶é—´
+	///×îºóĞŞ¸ÄÊ±¼ä
 	TSecurityFtdcTimeType	UpdateTime;
-	///æœ€åä¿®æ”¹æ¯«ç§’
+	///×îºóĞŞ¸ÄºÁÃë
 	TSecurityFtdcMillisecType	UpdateMillisec;
-	///ç”³ä¹°ä»·ä¸€
+	///ÉêÂò¼ÛÒ»
 	TSecurityFtdcPriceType	BidPrice1;
-	///ç”³ä¹°é‡ä¸€
+	///ÉêÂòÁ¿Ò»
 	TSecurityFtdcVolumeType	BidVolume1;
-	///ç”³å–ä»·ä¸€
+	///ÉêÂô¼ÛÒ»
 	TSecurityFtdcPriceType	AskPrice1;
-	///ç”³å–é‡ä¸€
+	///ÉêÂôÁ¿Ò»
 	TSecurityFtdcVolumeType	AskVolume1;
-	///ç”³ä¹°ä»·äºŒ
+	///ÉêÂò¼Û¶ş
 	TSecurityFtdcPriceType	BidPrice2;
-	///ç”³ä¹°é‡äºŒ
+	///ÉêÂòÁ¿¶ş
 	TSecurityFtdcVolumeType	BidVolume2;
-	///ç”³å–ä»·äºŒ
+	///ÉêÂô¼Û¶ş
 	TSecurityFtdcPriceType	AskPrice2;
-	///ç”³å–é‡äºŒ
+	///ÉêÂôÁ¿¶ş
 	TSecurityFtdcVolumeType	AskVolume2;
-	///ç”³ä¹°ä»·ä¸‰
+	///ÉêÂò¼ÛÈı
 	TSecurityFtdcPriceType	BidPrice3;
-	///ç”³ä¹°é‡ä¸‰
+	///ÉêÂòÁ¿Èı
 	TSecurityFtdcVolumeType	BidVolume3;
-	///ç”³å–ä»·ä¸‰
+	///ÉêÂô¼ÛÈı
 	TSecurityFtdcPriceType	AskPrice3;
-	///ç”³å–é‡ä¸‰
+	///ÉêÂôÁ¿Èı
 	TSecurityFtdcVolumeType	AskVolume3;
-	///ç”³ä¹°ä»·å››
+	///ÉêÂò¼ÛËÄ
 	TSecurityFtdcPriceType	BidPrice4;
-	///ç”³ä¹°é‡å››
+	///ÉêÂòÁ¿ËÄ
 	TSecurityFtdcVolumeType	BidVolume4;
-	///ç”³å–ä»·å››
+	///ÉêÂô¼ÛËÄ
 	TSecurityFtdcPriceType	AskPrice4;
-	///ç”³å–é‡å››
+	///ÉêÂôÁ¿ËÄ
 	TSecurityFtdcVolumeType	AskVolume4;
-	///ç”³ä¹°ä»·äº”
+	///ÉêÂò¼ÛÎå
 	TSecurityFtdcPriceType	BidPrice5;
-	///ç”³ä¹°é‡äº”
+	///ÉêÂòÁ¿Îå
 	TSecurityFtdcVolumeType	BidVolume5;
-	///ç”³å–ä»·äº”
+	///ÉêÂô¼ÛÎå
 	TSecurityFtdcPriceType	AskPrice5;
-	///ç”³å–é‡äº”
+	///ÉêÂôÁ¿Îå
 	TSecurityFtdcVolumeType	AskVolume5;
-	///å½“æ—¥å‡ä»·
+	///µ±ÈÕ¾ù¼Û
 	TSecurityFtdcPriceType	AveragePrice;
-	///ä¸šåŠ¡æ—¥æœŸ
+	///ÒµÎñÈÕÆÚ
 	TSecurityFtdcDateType	ActionDay;
+	///ÊıÁ¿(ĞÂ)
+	TSecurityFtdcLargeVolumeType	Volume_New;
 };
 
-///æŠ•èµ„è€…åˆçº¦äº¤æ˜“æƒé™
+///Í¶×ÊÕßºÏÔ¼½»Ò×È¨ÏŞ
 struct CSecurityFtdcInstrumentTradingRightField
 {
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///æŠ•èµ„è€…èŒƒå›´
+	///Í¶×ÊÕß·¶Î§
 	TSecurityFtdcInvestorRangeType	InvestorRange;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///ä¹°å–
+	///ÂòÂô
 	TSecurityFtdcDirectionType	Direction;
-	///äº¤æ˜“æƒé™
+	///½»Ò×È¨ÏŞ
 	TSecurityFtdcTradingRightType	TradingRight;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///è‚¡ç¥¨æƒé™åˆ†ç±»
+	///¹ÉÆ±È¨ÏŞ·ÖÀà
 	TSecurityFtdcInstrumentRangeType	InstrumentRange;
 };
 
-///æŠ•èµ„è€…æŒä»“æ˜ç»†
+///Í¶×ÊÕß³Ö²ÖÃ÷Ï¸
 struct CSecurityFtdcInvestorPositionDetailField
 {
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///æŠ•æœºå¥—ä¿æ ‡å¿—
+	///Í¶»úÌ×±£±êÖ¾
 	TSecurityFtdcHedgeFlagType	HedgeFlag;
-	///ä¹°å–
+	///ÂòÂô
 	TSecurityFtdcDirectionType	Direction;
-	///å¼€ä»“æ—¥æœŸ
+	///¿ª²ÖÈÕÆÚ
 	TSecurityFtdcDateType	OpenDate;
-	///æˆäº¤ç¼–å·
+	///³É½»±àºÅ
 	TSecurityFtdcTradeIDType	TradeID;
-	///æ•°é‡
+	///ÊıÁ¿
 	TSecurityFtdcVolumeType	Volume;
-	///å¼€ä»“ä»·
+	///¿ª²Ö¼Û
 	TSecurityFtdcPriceType	OpenPrice;
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///æˆäº¤ç±»å‹
+	///³É½»ÀàĞÍ
 	TSecurityFtdcTradeTypeType	TradeType;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æŠ•èµ„è€…ä¿è¯é‡‘
+	///Í¶×ÊÕß±£Ö¤½ğ
 	TSecurityFtdcMoneyType	Margin;
-	///äº¤æ˜“æ‰€ä¿è¯é‡‘
+	///½»Ò×Ëù±£Ö¤½ğ
 	TSecurityFtdcMoneyType	ExchMargin;
-	///æ˜¨ç»“ç®—ä»·
+	///×ò½áËã¼Û
 	TSecurityFtdcPriceType	LastSettlementPrice;
-	///ç»“ç®—ä»·
+	///½áËã¼Û
 	TSecurityFtdcPriceType	SettlementPrice;
-	///å¹³ä»“é‡
+	///Æ½²ÖÁ¿
 	TSecurityFtdcVolumeType	CloseVolume;
-	///å¹³ä»“é‡‘é¢
+	///Æ½²Ö½ğ¶î
 	TSecurityFtdcMoneyType	CloseAmount;
-	///è¿‡æˆ·è´¹
+	///¹ı»§·Ñ
 	TSecurityFtdcMoneyType	TransferFee;
-	///å°èŠ±ç¨
+	///Ó¡»¨Ë°
 	TSecurityFtdcMoneyType	StampTax;
-	///æ‰‹ç»­è´¹
+	///ÊÖĞø·Ñ
 	TSecurityFtdcMoneyType	Commission;
 	///AccountID
 	TSecurityFtdcAccountIDType	AccountID;
-	///è´¨æŠ¼å…¥åº“æ•°é‡
+	///ÖÊÑºÈë¿âÊıÁ¿
 	TSecurityFtdcVolumeType	PledgeInPosition;
-	///è´¨æŠ¼å…¥åº“å†»ç»“æ•°é‡
+	///ÖÊÑºÈë¿â¶³½áÊıÁ¿
 	TSecurityFtdcVolumeType	PledgeInFrozenPosition;
-	///æ­£å›è´­ä½¿ç”¨çš„æ ‡å‡†åˆ¸æ•°é‡
+	///Õı»Ø¹ºÊ¹ÓÃµÄ±ê×¼È¯ÊıÁ¿
 	TSecurityFtdcVolumeType	RepurchasePosition;
-	///èèµ„èåˆ¸é‡‘é¢
+	///ÈÚ×ÊÈÚÈ¯½ğ¶î
 	TSecurityFtdcMoneyType	Amount;
+	///±êµÄºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	UnderlyingInstrumentID;
 };
 
-///å€ºåˆ¸åˆ©æ¯
+///Õ®È¯ÀûÏ¢
 struct CSecurityFtdcBondInterestField
 {
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///åˆ©æ¯
+	///ÀûÏ¢
 	TSecurityFtdcInterestType	Interest;
 };
 
-///å¸‚å€¼é…å”®ä¿¡æ¯
+///ÊĞÖµÅäÊÛĞÅÏ¢
 struct CSecurityFtdcMarketRationInfoField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///å¯é…å”®æ‰‹æ•°
+	///¿ÉÅäÊÛÊÖÊı
 	TSecurityFtdcVolumeType	RationVolume;
 };
 
-///åˆçº¦æ‰‹ç»­è´¹ç‡
+///ºÏÔ¼ÊÖĞø·ÑÂÊ
 struct CSecurityFtdcInstrumentCommissionRateField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///æŠ•èµ„è€…èŒƒå›´
+	///Í¶×ÊÕß·¶Î§
 	TSecurityFtdcInvestorRangeType	InvestorRange;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///ä¹°å–æ–¹å‘
+	///ÂòÂô·½Ïò
 	TSecurityFtdcDirectionType	Direction;
-	///å°èŠ±ç¨ç‡
+	///Ó¡»¨Ë°ÂÊ
 	TSecurityFtdcRatioType	StampTaxRateByMoney;
-	///å°èŠ±ç¨ç‡(æŒ‰æ‰‹æ•°)
+	///Ó¡»¨Ë°ÂÊ(°´ÊÖÊı)
 	TSecurityFtdcRatioType	StampTaxRateByVolume;
-	///è¿‡æˆ·è´¹ç‡
+	///¹ı»§·ÑÂÊ
 	TSecurityFtdcRatioType	TransferFeeRateByMoney;
-	///è¿‡æˆ·è´¹ç‡(æŒ‰æ‰‹æ•°)
+	///¹ı»§·ÑÂÊ(°´ÊÖÊı)
 	TSecurityFtdcRatioType	TransferFeeRateByVolume;
-	///äº¤æ˜“è´¹
+	///½»Ò×·Ñ
 	TSecurityFtdcRatioType	TradeFeeByMoney;
-	///äº¤æ˜“è´¹(æŒ‰æ‰‹æ•°)
+	///½»Ò×·Ñ(°´ÊÖÊı)
 	TSecurityFtdcRatioType	TradeFeeByVolume;
-	///äº¤æ˜“é™„åŠ è´¹ç‡
+	///½»Ò×¸½¼Ó·ÑÂÊ
 	TSecurityFtdcRatioType	MarginByMoney;
-	///æœ€å°è¿‡æˆ·è´¹
+	///×îĞ¡½»Ò×·Ñ
 	TSecurityFtdcPriceType	MinTradeFee;
 };
 
-///ä½™åˆ¸ä¿¡æ¯
+///ÓàÈ¯ĞÅÏ¢
 struct CSecurityFtdcExcessStockInfoField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///ä½™åˆ¸æ•°é‡
+	///ÓàÈ¯ÊıÁ¿
 	TSecurityFtdcVolumeType	ExcessVolume;
-	///ä½™åˆ¸å†»ç»“æ•°é‡
+	///ÓàÈ¯¶³½áÊıÁ¿
 	TSecurityFtdcVolumeType	ExcessFrozenVolume;
 };
 
-///äº¤æ˜“æ‰€äº¤æ˜“å‘˜æŠ¥ç›˜æœº
+///ETFºÏÔ¼
+struct CSecurityFtdcETFInstrumentField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ETFÖ¤È¯´úÂë
+	TSecurityFtdcInstrumentIDType	ETFInstrumentID;
+	///ETF¶ÔÓ¦ÉêÊê´úÂë
+	TSecurityFtdcInstrumentIDType	ETFPurRedInstrumentID;
+	///×îĞ¡Éê¹ºÊê»Øµ¥Î»¶ÔÓ¦µÄETF·İÊı
+	TSecurityFtdcVolumeType	CreationRedemptionUnit;
+	///×î´óÏÖ½ğÌæ´ú±ÈÀı
+	TSecurityFtdcRatioType	Maxcashratio;
+	///»ù½ğµ±ÌìÉê¹ºÊê»Ø×´Ì¬
+	TSecurityFtdcCreationredemptionStatusType	Creationredemption;
+	///Ô¤¹À½ğ¶î
+	TSecurityFtdcMoneyType	EstimateCashComponent;
+};
+
+///ETF¹ÉÆ±Àº
+struct CSecurityFtdcETFBasketField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ETFÖ¤È¯´úÂë
+	TSecurityFtdcInstrumentIDType	ETFInstrumentID;
+	///¹ÉÆ±Ö¤È¯´úÂë
+	TSecurityFtdcInstrumentIDType	StockInstrumentID;
+	///¹ÉÆ±Ö¤È¯Ãû³Æ
+	TSecurityFtdcInstrumentNameType	StockInstrumentName;
+	///¹ÉÆ±ÊıÁ¿
+	TSecurityFtdcVolumeType	Volume;
+	///Ìæ´ú±êÖ¾
+	TSecurityFtdcETFCurrenceReplaceStatusType	CurrenceReplaceStatus;
+	///Òç¼Û±ÈÀı
+	TSecurityFtdcRatioType	Premium;
+	///×Ü½ğ¶î
+	TSecurityFtdcMoneyType	Amount;
+};
+
+///OFºÏÔ¼
+struct CSecurityFtdcOFInstrumentField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///OF»ù½ğ´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///»ù½ğµ±ÌìÉê¹ºÊê»Ø×´Ì¬
+	TSecurityFtdcCreationredemptionStatusType	Creationredemption;
+	///»ù½ğ¾»Öµ
+	TSecurityFtdcPriceType	NetPrice;
+};
+
+///SFºÏÔ¼
+struct CSecurityFtdcSFInstrumentField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///»ù½ğ´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///SF»ù½ğ´úÂë
+	TSecurityFtdcInstrumentIDType	SFInstrumentID;
+	///»ù½ğµ±Ìì²ğ·ÖºÏ²¢×´Ì¬
+	TSecurityFtdcSplitMergeStatusType	SplitMergeStatus;
+	///×îĞ¡²ğ·ÖÊıÁ¿
+	TSecurityFtdcVolumeType	MinSplitVolume;
+	///×îĞ¡ºÏ²¢ÊıÁ¿
+	TSecurityFtdcVolumeType	MinMergeVolume;
+	///²ğ·Ö/ºÏ²¢±ÈÀı
+	TSecurityFtdcVolumeType	VolumeRatio;
+	///»ù½ğ¾»Öµ
+	TSecurityFtdcPriceType	NetPrice;
+};
+
+///ºÏÔ¼µ¥ÊÖ±£Ö¤½ğ
+struct CSecurityFtdcInstrumentUnitMarginField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///ºÏÔ¼µ¥ÊÖ±£Ö¤½ğ
+	TSecurityFtdcMoneyType	UnitMargin;
+};
+
+///ÆÚÈ¨×Ê½ğÏŞÖÆ²ÎÊı
+struct CSecurityFtdcOptionsFundLimitParamField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///×î´ó¿ÉÂò½ğ¶î
+	TSecurityFtdcMoneyType	MaxBuyAmount;
+};
+
+///Í¶×ÊÕßÆÚÈ¨³Ö²Ö
+struct CSecurityFtdcInvestorOptionsPositionField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß·¶Î§
+	TSecurityFtdcInvestorRangeType	InvestorRange;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///InstrumentID
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///×î´ó¶àÍ·²ÖÎ»ÏŞÖÆ
+	TSecurityFtdcVolumeType	MaxLongPositionLimit;
+	///×î´óÂò¿ªÁ¿ÏŞÖÆ
+	TSecurityFtdcVolumeType	MaxBuyVolLimit;
+	///×î´ó×Ü²ÖÎ»ÏŞÖÆ
+	TSecurityFtdcVolumeType	MaxPositionLimit;
+	///¶àÍ·³Ö²Ö
+	TSecurityFtdcVolumeType	LongPosition;
+	///¿ÕÍ·³Ö²Ö
+	TSecurityFtdcVolumeType	ShortPosition;
+	///Âò¿ªÁ¿
+	TSecurityFtdcVolumeType	BuyVolume;
+	///Âò¿ª¶³½áÁ¿
+	TSecurityFtdcVolumeType	BuyFrozenVolume;
+	///¶àÍ·¶³½á³Ö²Ö
+	TSecurityFtdcVolumeType	LongFrozenPosition;
+	///¿ÕÍ·¶³½á³Ö²Ö
+	TSecurityFtdcVolumeType	ShortFrozenPosition;
+};
+
+///Ô¤½»¸îĞÅÏ¢
+struct CSecurityFtdcPreDelivInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///½»¸îÀàĞÍ
+	TSecurityFtdcDelivTypeType	DelivType;
+	///±êµÄºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	UnderlyingInstrumentID;
+	///½»¸îÊıÁ¿
+	TSecurityFtdcVolumeType	DelivVolume;
+	///½»¸î½ğ¶î
+	TSecurityFtdcMoneyType	DelivAmount;
+	///ÆÚÈ¨Ö´ĞĞÊıÁ¿
+	TSecurityFtdcVolumeType	ExecVolume;
+};
+
+///¿ÉÈÚÈ¯·ÖÅäĞÅÏ¢
+struct CSecurityFtdcCreditStockAssignInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///ÈÚÈ¯ÏŞÁ¿
+	TSecurityFtdcVolumeType	LimitVolume;
+	///ÉÏÈÕÈÚÈ¯ÊıÁ¿
+	TSecurityFtdcVolumeType	YDVolume;
+	///Ê£Óà¿ÉÈÚÈ¯ÊıÁ¿
+	TSecurityFtdcVolumeType	LeftVolume;
+	///¶³½áÈÚÈ¯ÊıÁ¿
+	TSecurityFtdcVolumeType	FrozenVolume;
+};
+
+///¿ÉÈÚ×Ê·ÖÅäĞÅÏ¢
+struct CSecurityFtdcCreditCashAssignInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///ÈÚ×ÊÏŞ¶î
+	TSecurityFtdcMoneyType	LimitAmount;
+	///ÉÏÈÕÈÚ×Ê½ğ¶î
+	TSecurityFtdcMoneyType	YDAmount;
+};
+
+///Ö¤È¯ÕÛËãÂÊ
+struct CSecurityFtdcConversionRateField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///ÕÛËã±ÈÂÊ
+	TSecurityFtdcRatioType	ConversionRate;
+	///µ±Ç°ÊÇ·ñÖ§³ÖÈÚ×Ê½»Ò×
+	TSecurityFtdcBoolType	IsTradingForMargin;
+	///µ±Ç°ÊÇ·ñÖ§³ÖÈÚÈ¯½»Ò×
+	TSecurityFtdcBoolType	IsTradingForShort;
+};
+
+///ÀúÊ·ĞÅÓÃ¸ºÕ®ĞÅÏ¢
+struct CSecurityFtdcHisCreditDebtInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///¿ª²ÖÈÕÆÚ
+	TSecurityFtdcDateType	OpenDate;
+	///¸ºÕ®ÀàĞÍ
+	TSecurityFtdcDirectionType	Direction;
+	///¿ª²Ö¼Û
+	TSecurityFtdcPriceType	OpenPrice;
+	///ÊıÁ¿
+	TSecurityFtdcVolumeType	Volume;
+	///ÈÚ×ÊÈÚÈ¯½ğ¶î
+	TSecurityFtdcMoneyType	Amount;
+};
+
+///½»Ò×Ëù½»Ò×Ô±±¨ÅÌ»ú
 struct CSecurityFtdcTraderOfferField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///å¯†ç 
+	///ÃÜÂë
 	TSecurityFtdcPasswordType	Password;
-	///å®‰è£…ç¼–å·
+	///°²×°±àºÅ
 	TSecurityFtdcInstallIDType	InstallID;
-	///æœ¬åœ°æŠ¥å•ç¼–å·
+	///±¾µØ±¨µ¥±àºÅ
 	TSecurityFtdcOrderLocalIDType	OrderLocalID;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜è¿æ¥çŠ¶æ€
+	///½»Ò×Ëù½»Ò×Ô±Á¬½Ó×´Ì¬
 	TSecurityFtdcTraderConnectStatusType	TraderConnectStatus;
-	///å‘å‡ºè¿æ¥è¯·æ±‚çš„æ—¥æœŸ
+	///·¢³öÁ¬½ÓÇëÇóµÄÈÕÆÚ
 	TSecurityFtdcDateType	ConnectRequestDate;
-	///å‘å‡ºè¿æ¥è¯·æ±‚çš„æ—¶é—´
+	///·¢³öÁ¬½ÓÇëÇóµÄÊ±¼ä
 	TSecurityFtdcTimeType	ConnectRequestTime;
-	///ä¸Šæ¬¡æŠ¥å‘Šæ—¥æœŸ
+	///ÉÏ´Î±¨¸æÈÕÆÚ
 	TSecurityFtdcDateType	LastReportDate;
-	///ä¸Šæ¬¡æŠ¥å‘Šæ—¶é—´
+	///ÉÏ´Î±¨¸æÊ±¼ä
 	TSecurityFtdcTimeType	LastReportTime;
-	///å®Œæˆè¿æ¥æ—¥æœŸ
+	///Íê³ÉÁ¬½ÓÈÕÆÚ
 	TSecurityFtdcDateType	ConnectDate;
-	///å®Œæˆè¿æ¥æ—¶é—´
+	///Íê³ÉÁ¬½ÓÊ±¼ä
 	TSecurityFtdcTimeType	ConnectTime;
-	///å¯åŠ¨æ—¥æœŸ
+	///Æô¶¯ÈÕÆÚ
 	TSecurityFtdcDateType	StartDate;
-	///å¯åŠ¨æ—¶é—´
+	///Æô¶¯Ê±¼ä
 	TSecurityFtdcTimeType	StartTime;
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
 };
 
-///äº¤æ˜“æ‰€è¡Œæƒ…æŠ¥ç›˜æœº
+///½»Ò×ËùĞĞÇé±¨ÅÌ»ú
 struct CSecurityFtdcMDTraderOfferField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///å¯†ç 
+	///ÃÜÂë
 	TSecurityFtdcPasswordType	Password;
-	///å®‰è£…ç¼–å·
+	///°²×°±àºÅ
 	TSecurityFtdcInstallIDType	InstallID;
-	///æœ¬åœ°æŠ¥å•ç¼–å·
+	///±¾µØ±¨µ¥±àºÅ
 	TSecurityFtdcOrderLocalIDType	OrderLocalID;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜è¿æ¥çŠ¶æ€
+	///½»Ò×Ëù½»Ò×Ô±Á¬½Ó×´Ì¬
 	TSecurityFtdcTraderConnectStatusType	TraderConnectStatus;
-	///å‘å‡ºè¿æ¥è¯·æ±‚çš„æ—¥æœŸ
+	///·¢³öÁ¬½ÓÇëÇóµÄÈÕÆÚ
 	TSecurityFtdcDateType	ConnectRequestDate;
-	///å‘å‡ºè¿æ¥è¯·æ±‚çš„æ—¶é—´
+	///·¢³öÁ¬½ÓÇëÇóµÄÊ±¼ä
 	TSecurityFtdcTimeType	ConnectRequestTime;
-	///ä¸Šæ¬¡æŠ¥å‘Šæ—¥æœŸ
+	///ÉÏ´Î±¨¸æÈÕÆÚ
 	TSecurityFtdcDateType	LastReportDate;
-	///ä¸Šæ¬¡æŠ¥å‘Šæ—¶é—´
+	///ÉÏ´Î±¨¸æÊ±¼ä
 	TSecurityFtdcTimeType	LastReportTime;
-	///å®Œæˆè¿æ¥æ—¥æœŸ
+	///Íê³ÉÁ¬½ÓÈÕÆÚ
 	TSecurityFtdcDateType	ConnectDate;
-	///å®Œæˆè¿æ¥æ—¶é—´
+	///Íê³ÉÁ¬½ÓÊ±¼ä
 	TSecurityFtdcTimeType	ConnectTime;
-	///å¯åŠ¨æ—¥æœŸ
+	///Æô¶¯ÈÕÆÚ
 	TSecurityFtdcDateType	StartDate;
-	///å¯åŠ¨æ—¶é—´
+	///Æô¶¯Ê±¼ä
 	TSecurityFtdcTimeType	StartTime;
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
 };
 
-///å‰ç½®çŠ¶æ€
+///Ç°ÖÃ×´Ì¬
 struct CSecurityFtdcFrontStatusField
 {
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¸Šæ¬¡æŠ¥å‘Šæ—¥æœŸ
+	///ÉÏ´Î±¨¸æÈÕÆÚ
 	TSecurityFtdcDateType	LastReportDate;
-	///ä¸Šæ¬¡æŠ¥å‘Šæ—¶é—´
+	///ÉÏ´Î±¨¸æÊ±¼ä
 	TSecurityFtdcTimeType	LastReportTime;
-	///æ˜¯å¦æ´»è·ƒ
+	///ÊÇ·ñ»îÔ¾
 	TSecurityFtdcBoolType	IsActive;
 };
 
-///ç”¨æˆ·ä¼šè¯
+///ÓÃ»§»á»°
 struct CSecurityFtdcUserSessionField
 {
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///ç™»å½•æ—¥æœŸ
+	///µÇÂ¼ÈÕÆÚ
 	TSecurityFtdcDateType	LoginDate;
-	///ç™»å½•æ—¶é—´
+	///µÇÂ¼Ê±¼ä
 	TSecurityFtdcTimeType	LoginTime;
-	///IPåœ°å€
+	///IPµØÖ·
 	TSecurityFtdcIPAddressType	IPAddress;
-	///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
 	TSecurityFtdcProductInfoType	UserProductInfo;
-	///æ¥å£ç«¯äº§å“ä¿¡æ¯
+	///½Ó¿Ú¶Ë²úÆ·ĞÅÏ¢
 	TSecurityFtdcProductInfoType	InterfaceProductInfo;
-	///åè®®ä¿¡æ¯
+	///Ğ­ÒéĞÅÏ¢
 	TSecurityFtdcProtocolInfoType	ProtocolInfo;
-	///Macåœ°å€
+	///MacµØÖ·
 	TSecurityFtdcMacAddressType	MacAddress;
 };
 
-///æŠ¥å•
+///±¨µ¥
 struct CSecurityFtdcOrderField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///æŠ¥å•å¼•ç”¨
+	///±¨µ¥ÒıÓÃ
 	TSecurityFtdcOrderRefType	OrderRef;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æŠ¥å•ä»·æ ¼æ¡ä»¶
+	///±¨µ¥¼Û¸ñÌõ¼ş
 	TSecurityFtdcOrderPriceTypeType	OrderPriceType;
-	///ä¹°å–æ–¹å‘
+	///ÂòÂô·½Ïò
 	TSecurityFtdcDirectionType	Direction;
-	///ç»„åˆå¼€å¹³æ ‡å¿—
+	///×éºÏ¿ªÆ½±êÖ¾
 	TSecurityFtdcCombOffsetFlagType	CombOffsetFlag;
-	///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+	///×éºÏÍ¶»úÌ×±£±êÖ¾
 	TSecurityFtdcCombHedgeFlagType	CombHedgeFlag;
-	///ä»·æ ¼
+	///¼Û¸ñ
 	TSecurityFtdcStockPriceType	LimitPrice;
-	///æ•°é‡
+	///ÊıÁ¿
 	TSecurityFtdcVolumeType	VolumeTotalOriginal;
-	///æœ‰æ•ˆæœŸç±»å‹
+	///ÓĞĞ§ÆÚÀàĞÍ
 	TSecurityFtdcTimeConditionType	TimeCondition;
-	///GTDæ—¥æœŸ
+	///GTDÈÕÆÚ
 	TSecurityFtdcDateType	GTDDate;
-	///æˆäº¤é‡ç±»å‹
+	///³É½»Á¿ÀàĞÍ
 	TSecurityFtdcVolumeConditionType	VolumeCondition;
-	///æœ€å°æˆäº¤é‡
+	///×îĞ¡³É½»Á¿
 	TSecurityFtdcVolumeType	MinVolume;
-	///è§¦å‘æ¡ä»¶
+	///´¥·¢Ìõ¼ş
 	TSecurityFtdcContingentConditionType	ContingentCondition;
-	///æ­¢æŸä»·
+	///Ö¹Ëğ¼Û
 	TSecurityFtdcPriceType	StopPrice;
-	///å¼ºå¹³åŸå› 
+	///Ç¿Æ½Ô­Òò
 	TSecurityFtdcForceCloseReasonType	ForceCloseReason;
-	///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+	///×Ô¶¯¹ÒÆğ±êÖ¾
 	TSecurityFtdcBoolType	IsAutoSuspend;
-	///ä¸šåŠ¡å•å…ƒ
+	///ÒµÎñµ¥Ôª
 	TSecurityFtdcBusinessUnitType	BusinessUnit;
-	///è¯·æ±‚ç¼–å·
+	///ÇëÇó±àºÅ
 	TSecurityFtdcRequestIDType	RequestID;
-	///æœ¬åœ°æŠ¥å•ç¼–å·
+	///±¾µØ±¨µ¥±àºÅ
 	TSecurityFtdcOrderLocalIDType	OrderLocalID;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///å®¢æˆ·ä»£ç 
+	///¿Í»§´úÂë
 	TSecurityFtdcClientIDType	ClientID;
-	///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
 	TSecurityFtdcExchangeInstIDType	ExchangeInstID;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
-	///å®‰è£…ç¼–å·
+	///°²×°±àºÅ
 	TSecurityFtdcInstallIDType	InstallID;
-	///æŠ¥å•æäº¤çŠ¶æ€
+	///±¨µ¥Ìá½»×´Ì¬
 	TSecurityFtdcOrderSubmitStatusType	OrderSubmitStatus;
-	///è´¦æˆ·ä»£ç 
+	///ÕË»§´úÂë
 	TSecurityFtdcAccountIDType	AccountID;
-	///æŠ¥å•æç¤ºåºå·
+	///±¨µ¥ÌáÊ¾ĞòºÅ
 	TSecurityFtdcSequenceNoType	NotifySequence;
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///æŠ¥å•ç¼–å·
+	///±¨µ¥±àºÅ
 	TSecurityFtdcOrderSysIDType	OrderSysID;
-	///æŠ¥å•æ¥æº
+	///±¨µ¥À´Ô´
 	TSecurityFtdcOrderSourceType	OrderSource;
-	///æŠ¥å•çŠ¶æ€
+	///±¨µ¥×´Ì¬
 	TSecurityFtdcOrderStatusType	OrderStatus;
-	///æŠ¥å•ç±»å‹
+	///±¨µ¥ÀàĞÍ
 	TSecurityFtdcOrderTypeType	OrderType;
-	///ä»Šæˆäº¤æ•°é‡
+	///½ñ³É½»ÊıÁ¿
 	TSecurityFtdcVolumeType	VolumeTraded;
-	///å‰©ä½™æ•°é‡
+	///Ê£ÓàÊıÁ¿
 	TSecurityFtdcVolumeType	VolumeTotal;
-	///æŠ¥å•æ—¥æœŸ
+	///±¨µ¥ÈÕÆÚ
 	TSecurityFtdcDateType	InsertDate;
-	///å§”æ‰˜æ—¶é—´
+	///Î¯ÍĞÊ±¼ä
 	TSecurityFtdcTimeType	InsertTime;
-	///æ¿€æ´»æ—¶é—´
+	///¼¤»îÊ±¼ä
 	TSecurityFtdcTimeType	ActiveTime;
-	///æŒ‚èµ·æ—¶é—´
+	///¹ÒÆğÊ±¼ä
 	TSecurityFtdcTimeType	SuspendTime;
-	///æœ€åä¿®æ”¹æ—¶é—´
+	///×îºóĞŞ¸ÄÊ±¼ä
 	TSecurityFtdcTimeType	UpdateTime;
-	///æ’¤é”€æ—¶é—´
+	///³·ÏúÊ±¼ä
 	TSecurityFtdcTimeType	CancelTime;
-	///æœ€åä¿®æ”¹äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///×îºóĞŞ¸Ä½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	ActiveTraderID;
-	///ç»“ç®—ä¼šå‘˜ç¼–å·
+	///½áËã»áÔ±±àºÅ
 	TSecurityFtdcParticipantIDType	ClearingPartID;
-	///åºå·
+	///ĞòºÅ
 	TSecurityFtdcSequenceNoType	SequenceNo;
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
 	TSecurityFtdcProductInfoType	UserProductInfo;
-	///çŠ¶æ€ä¿¡æ¯
+	///×´Ì¬ĞÅÏ¢
 	TSecurityFtdcErrorMsgType	StatusMsg;
-	///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+	///ÓÃ»§Ç¿ÆÀ±êÖ¾
 	TSecurityFtdcBoolType	UserForceClose;
-	///æ“ä½œç”¨æˆ·ä»£ç 
+	///²Ù×÷ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	ActiveUserID;
-	///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
 	TSecurityFtdcSequenceNoType	BrokerOrderSeq;
-	///ç›¸å…³æŠ¥å•
+	///Ïà¹Ø±¨µ¥
 	TSecurityFtdcOrderSysIDType	RelativeOrderSysID;
-	///è¥ä¸šéƒ¨ç¼–å·
+	///ÓªÒµ²¿±àºÅ
 	TSecurityFtdcBranchIDType	BranchID;
-	///æˆäº¤æ•°é‡
+	///³É½»ÊıÁ¿
 	TSecurityFtdcMoneyType	TradeAmount;
-	///æ˜¯å¦ETF
+	///ÊÇ·ñETF
 	TSecurityFtdcBoolType	IsETF;
+	///ºÏÔ¼ÀàĞÍ
+	TSecurityFtdcInstrumentTypeType	InstrumentType;
 };
 
-///æŠ¥å•æ“ä½œ
+///±¨µ¥²Ù×÷
 struct CSecurityFtdcOrderActionField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///æŠ¥å•æ“ä½œå¼•ç”¨
+	///±¨µ¥²Ù×÷ÒıÓÃ
 	TSecurityFtdcOrderActionRefType	OrderActionRef;
-	///æŠ¥å•å¼•ç”¨
+	///±¨µ¥ÒıÓÃ
 	TSecurityFtdcOrderRefType	OrderRef;
-	///è¯·æ±‚ç¼–å·
+	///ÇëÇó±àºÅ
 	TSecurityFtdcRequestIDType	RequestID;
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æ“ä½œæ ‡å¿—
+	///²Ù×÷±êÖ¾
 	TSecurityFtdcActionFlagType	ActionFlag;
-	///ä»·æ ¼
+	///¼Û¸ñ
 	TSecurityFtdcPriceType	LimitPrice;
-	///æ•°é‡å˜åŒ–
+	///ÊıÁ¿±ä»¯
 	TSecurityFtdcVolumeType	VolumeChange;
-	///æ“ä½œæ—¥æœŸ
+	///²Ù×÷ÈÕÆÚ
 	TSecurityFtdcDateType	ActionDate;
-	///æ“ä½œæ—¶é—´
+	///²Ù×÷Ê±¼ä
 	TSecurityFtdcTimeType	ActionTime;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
-	///å®‰è£…ç¼–å·
+	///°²×°±àºÅ
 	TSecurityFtdcInstallIDType	InstallID;
-	///æœ¬åœ°æŠ¥å•ç¼–å·
+	///±¾µØ±¨µ¥±àºÅ
 	TSecurityFtdcOrderLocalIDType	OrderLocalID;
-	///æ“ä½œæœ¬åœ°ç¼–å·
+	///²Ù×÷±¾µØ±àºÅ
 	TSecurityFtdcOrderLocalIDType	ActionLocalID;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///å®¢æˆ·ä»£ç 
+	///¿Í»§´úÂë
 	TSecurityFtdcClientIDType	ClientID;
-	///ä¸šåŠ¡å•å…ƒ
+	///ÒµÎñµ¥Ôª
 	TSecurityFtdcBusinessUnitType	BusinessUnit;
-	///æŠ¥å•æ“ä½œçŠ¶æ€
+	///±¨µ¥²Ù×÷×´Ì¬
 	TSecurityFtdcOrderActionStatusType	OrderActionStatus;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///è¥ä¸šéƒ¨ç¼–å·
+	///ÓªÒµ²¿±àºÅ
 	TSecurityFtdcBranchIDType	BranchID;
-	///çŠ¶æ€ä¿¡æ¯
+	///×´Ì¬ĞÅÏ¢
 	TSecurityFtdcErrorMsgType	StatusMsg;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
+	///ºÏÔ¼ÀàĞÍ
+	TSecurityFtdcInstrumentTypeType	InstrumentType;
 };
 
-///é”™è¯¯æŠ¥å•
+///´íÎó±¨µ¥
 struct CSecurityFtdcErrOrderField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///æŠ¥å•å¼•ç”¨
+	///±¨µ¥ÒıÓÃ
 	TSecurityFtdcOrderRefType	OrderRef;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æŠ¥å•ä»·æ ¼æ¡ä»¶
+	///±¨µ¥¼Û¸ñÌõ¼ş
 	TSecurityFtdcOrderPriceTypeType	OrderPriceType;
-	///ä¹°å–æ–¹å‘
+	///ÂòÂô·½Ïò
 	TSecurityFtdcDirectionType	Direction;
-	///ç»„åˆå¼€å¹³æ ‡å¿—
+	///×éºÏ¿ªÆ½±êÖ¾
 	TSecurityFtdcCombOffsetFlagType	CombOffsetFlag;
-	///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+	///×éºÏÍ¶»úÌ×±£±êÖ¾
 	TSecurityFtdcCombHedgeFlagType	CombHedgeFlag;
-	///ä»·æ ¼
+	///¼Û¸ñ
 	TSecurityFtdcStockPriceType	LimitPrice;
-	///æ•°é‡
+	///ÊıÁ¿
 	TSecurityFtdcVolumeType	VolumeTotalOriginal;
-	///æœ‰æ•ˆæœŸç±»å‹
+	///ÓĞĞ§ÆÚÀàĞÍ
 	TSecurityFtdcTimeConditionType	TimeCondition;
-	///GTDæ—¥æœŸ
+	///GTDÈÕÆÚ
 	TSecurityFtdcDateType	GTDDate;
-	///æˆäº¤é‡ç±»å‹
+	///³É½»Á¿ÀàĞÍ
 	TSecurityFtdcVolumeConditionType	VolumeCondition;
-	///æœ€å°æˆäº¤é‡
+	///×îĞ¡³É½»Á¿
 	TSecurityFtdcVolumeType	MinVolume;
-	///è§¦å‘æ¡ä»¶
+	///´¥·¢Ìõ¼ş
 	TSecurityFtdcContingentConditionType	ContingentCondition;
-	///æ­¢æŸä»·
+	///Ö¹Ëğ¼Û
 	TSecurityFtdcPriceType	StopPrice;
-	///å¼ºå¹³åŸå› 
+	///Ç¿Æ½Ô­Òò
 	TSecurityFtdcForceCloseReasonType	ForceCloseReason;
-	///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+	///×Ô¶¯¹ÒÆğ±êÖ¾
 	TSecurityFtdcBoolType	IsAutoSuspend;
-	///ä¸šåŠ¡å•å…ƒ
+	///ÒµÎñµ¥Ôª
 	TSecurityFtdcBusinessUnitType	BusinessUnit;
-	///è¯·æ±‚ç¼–å·
+	///ÇëÇó±àºÅ
 	TSecurityFtdcRequestIDType	RequestID;
-	///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+	///ÓÃ»§Ç¿ÆÀ±êÖ¾
 	TSecurityFtdcBoolType	UserForceClose;
-	///é”™è¯¯ä»£ç 
+	///´íÎó´úÂë
 	TSecurityFtdcErrorIDType	ErrorID;
-	///é”™è¯¯ä¿¡æ¯
+	///´íÎóĞÅÏ¢
 	TSecurityFtdcErrorMsgType	ErrorMsg;
 };
 
-///é”™è¯¯æŠ¥å•æ“ä½œ
+///´íÎó±¨µ¥²Ù×÷
 struct CSecurityFtdcErrOrderActionField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///æŠ¥å•æ“ä½œå¼•ç”¨
+	///±¨µ¥²Ù×÷ÒıÓÃ
 	TSecurityFtdcOrderActionRefType	OrderActionRef;
-	///æŠ¥å•å¼•ç”¨
+	///±¨µ¥ÒıÓÃ
 	TSecurityFtdcOrderRefType	OrderRef;
-	///è¯·æ±‚ç¼–å·
+	///ÇëÇó±àºÅ
 	TSecurityFtdcRequestIDType	RequestID;
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æ“ä½œæ ‡å¿—
+	///²Ù×÷±êÖ¾
 	TSecurityFtdcActionFlagType	ActionFlag;
-	///ä»·æ ¼
+	///¼Û¸ñ
 	TSecurityFtdcPriceType	LimitPrice;
-	///æ•°é‡å˜åŒ–
+	///ÊıÁ¿±ä»¯
 	TSecurityFtdcVolumeType	VolumeChange;
-	///æ“ä½œæ—¥æœŸ
+	///²Ù×÷ÈÕÆÚ
 	TSecurityFtdcDateType	ActionDate;
-	///æ“ä½œæ—¶é—´
+	///²Ù×÷Ê±¼ä
 	TSecurityFtdcTimeType	ActionTime;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
-	///å®‰è£…ç¼–å·
+	///°²×°±àºÅ
 	TSecurityFtdcInstallIDType	InstallID;
-	///æœ¬åœ°æŠ¥å•ç¼–å·
+	///±¾µØ±¨µ¥±àºÅ
 	TSecurityFtdcOrderLocalIDType	OrderLocalID;
-	///æ“ä½œæœ¬åœ°ç¼–å·
+	///²Ù×÷±¾µØ±àºÅ
 	TSecurityFtdcOrderLocalIDType	ActionLocalID;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///å®¢æˆ·ä»£ç 
+	///¿Í»§´úÂë
 	TSecurityFtdcClientIDType	ClientID;
-	///ä¸šåŠ¡å•å…ƒ
+	///ÒµÎñµ¥Ôª
 	TSecurityFtdcBusinessUnitType	BusinessUnit;
-	///æŠ¥å•æ“ä½œçŠ¶æ€
+	///±¨µ¥²Ù×÷×´Ì¬
 	TSecurityFtdcOrderActionStatusType	OrderActionStatus;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///è¥ä¸šéƒ¨ç¼–å·
+	///ÓªÒµ²¿±àºÅ
 	TSecurityFtdcBranchIDType	BranchID;
-	///çŠ¶æ€ä¿¡æ¯
+	///×´Ì¬ĞÅÏ¢
 	TSecurityFtdcErrorMsgType	StatusMsg;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///é”™è¯¯ä»£ç 
+	///´íÎó´úÂë
 	TSecurityFtdcErrorIDType	ErrorID;
-	///é”™è¯¯ä¿¡æ¯
+	///´íÎóĞÅÏ¢
 	TSecurityFtdcErrorMsgType	ErrorMsg;
+	///ºÏÔ¼ÀàĞÍ
+	TSecurityFtdcInstrumentTypeType	InstrumentType;
 };
 
-///æˆäº¤
+///³É½»
 struct CSecurityFtdcTradeField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///æŠ¥å•å¼•ç”¨
+	///±¨µ¥ÒıÓÃ
 	TSecurityFtdcOrderRefType	OrderRef;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æˆäº¤ç¼–å·
+	///³É½»±àºÅ
 	TSecurityFtdcTradeIDType	TradeID;
-	///ä¹°å–æ–¹å‘
+	///ÂòÂô·½Ïò
 	TSecurityFtdcDirectionType	Direction;
-	///æŠ¥å•ç¼–å·
+	///±¨µ¥±àºÅ
 	TSecurityFtdcOrderSysIDType	OrderSysID;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///å®¢æˆ·ä»£ç 
+	///¿Í»§´úÂë
 	TSecurityFtdcClientIDType	ClientID;
-	///äº¤æ˜“è§’è‰²
+	///½»Ò×½ÇÉ«
 	TSecurityFtdcTradingRoleType	TradingRole;
-	///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
 	TSecurityFtdcExchangeInstIDType	ExchangeInstID;
-	///å¼€å¹³æ ‡å¿—
+	///¿ªÆ½±êÖ¾
 	TSecurityFtdcOffsetFlagType	OffsetFlag;
-	///æŠ•æœºå¥—ä¿æ ‡å¿—
+	///Í¶»úÌ×±£±êÖ¾
 	TSecurityFtdcHedgeFlagType	HedgeFlag;
-	///ä»·æ ¼
+	///¼Û¸ñ
 	TSecurityFtdcStockPriceType	Price;
-	///æ•°é‡
+	///ÊıÁ¿
 	TSecurityFtdcVolumeType	Volume;
-	///æˆäº¤æ—¶æœŸ
+	///³É½»Ê±ÆÚ
 	TSecurityFtdcDateType	TradeDate;
-	///æˆäº¤æ—¶é—´
+	///³É½»Ê±¼ä
 	TSecurityFtdcTimeType	TradeTime;
-	///æˆäº¤ç±»å‹
+	///³É½»ÀàĞÍ
 	TSecurityFtdcTradeTypeType	TradeType;
-	///æˆäº¤ä»·æ¥æº
+	///³É½»¼ÛÀ´Ô´
 	TSecurityFtdcPriceSourceType	PriceSource;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
-	///æœ¬åœ°æŠ¥å•ç¼–å·
+	///±¾µØ±¨µ¥±àºÅ
 	TSecurityFtdcOrderLocalIDType	OrderLocalID;
-	///ç»“ç®—ä¼šå‘˜ç¼–å·
+	///½áËã»áÔ±±àºÅ
 	TSecurityFtdcParticipantIDType	ClearingPartID;
-	///ä¸šåŠ¡å•å…ƒ
+	///ÒµÎñµ¥Ôª
 	TSecurityFtdcBusinessUnitType	BusinessUnit;
-	///åºå·
+	///ĞòºÅ
 	TSecurityFtdcSequenceNoType	SequenceNo;
-	///æˆäº¤æ¥æº
+	///³É½»À´Ô´
 	TSecurityFtdcTradeSourceType	TradeSource;
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
 	TSecurityFtdcSequenceNoType	BrokerOrderSeq;
+	///³É½»½ğ¶î
+	TSecurityFtdcMoneyType	TradeAmount;
+	///³É½»ĞòºÅ
+	TSecurityFtdcTradeIndexType	TradeIndex;
 };
 
-///æŠ•èµ„è€…æŒä»“
+///Í¶×ÊÕß³Ö²Ö
 struct CSecurityFtdcInvestorPositionField
 {
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///æŒä»“å¤šç©ºæ–¹å‘
+	///³Ö²Ö¶à¿Õ·½Ïò
 	TSecurityFtdcPosiDirectionType	PosiDirection;
-	///æŠ•æœºå¥—ä¿æ ‡å¿—
+	///Í¶»úÌ×±£±êÖ¾
 	TSecurityFtdcHedgeFlagType	HedgeFlag;
-	///æŒä»“æ—¥æœŸ
+	///³Ö²ÖÈÕÆÚ
 	TSecurityFtdcPositionDateType	PositionDate;
-	///ä¸Šæ—¥æŒä»“
+	///ÉÏÈÕ³Ö²Ö
 	TSecurityFtdcVolumeType	YdPosition;
-	///ä»Šæ—¥æŒä»“
+	///×Ü³Ö²Ö
 	TSecurityFtdcVolumeType	Position;
-	///å¤šå¤´å†»ç»“
+	///¶àÍ·¶³½á
 	TSecurityFtdcVolumeType	LongFrozen;
-	///ç©ºå¤´å†»ç»“
+	///¿ÕÍ·¶³½á
 	TSecurityFtdcVolumeType	ShortFrozen;
-	///å¼€ä»“å†»ç»“é‡‘é¢
+	///¿ª²Ö¶³½á½ğ¶î
 	TSecurityFtdcMoneyType	LongFrozenAmount;
-	///å¼€ä»“å†»ç»“é‡‘é¢
+	///¿ª²Ö¶³½á½ğ¶î
 	TSecurityFtdcMoneyType	ShortFrozenAmount;
-	///å¼€ä»“é‡
+	///¿ª²ÖÁ¿
 	TSecurityFtdcVolumeType	OpenVolume;
-	///å¹³ä»“é‡
+	///Æ½²ÖÁ¿
 	TSecurityFtdcVolumeType	CloseVolume;
-	///å¼€ä»“é‡‘é¢
+	///¿ª²Ö½ğ¶î
 	TSecurityFtdcMoneyType	OpenAmount;
-	///å¹³ä»“é‡‘é¢
+	///Æ½²Ö½ğ¶î
 	TSecurityFtdcMoneyType	CloseAmount;
-	///æŒä»“æˆæœ¬
+	///³Ö²Ö³É±¾
 	TSecurityFtdcMoneyType	PositionCost;
-	///å†»ç»“çš„èµ„é‡‘
+	///¶³½áµÄ×Ê½ğ
 	TSecurityFtdcMoneyType	FrozenCash;
-	///èµ„é‡‘å·®é¢
+	///×Ê½ğ²î¶î
 	TSecurityFtdcMoneyType	CashIn;
-	///æ‰‹ç»­è´¹
+	///ÊÖĞø·Ñ
 	TSecurityFtdcMoneyType	Commission;
-	///ä¸Šæ¬¡ç»“ç®—ä»·
+	///ÉÏ´Î½áËã¼Û
 	TSecurityFtdcPriceType	PreSettlementPrice;
-	///æœ¬æ¬¡ç»“ç®—ä»·
+	///±¾´Î½áËã¼Û
 	TSecurityFtdcPriceType	SettlementPrice;
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///å¼€ä»“æˆæœ¬
+	///¿ª²Ö³É±¾
 	TSecurityFtdcMoneyType	OpenCost;
-	///äº¤æ˜“æ‰€ä¿è¯é‡‘
+	///½»Ò×Ëù±£Ö¤½ğ
 	TSecurityFtdcMoneyType	ExchangeMargin;
-	///ä»Šæ—¥æŒä»“
+	///½ñÈÕ³Ö²Ö
 	TSecurityFtdcVolumeType	TodayPosition;
-	///è¿‡æˆ·è´¹
+	///¹ı»§·Ñ
 	TSecurityFtdcMoneyType	TransferFee;
-	///å°èŠ±ç¨
+	///Ó¡»¨Ë°
 	TSecurityFtdcMoneyType	StampTax;
-	///ä»Šæ—¥ç”³è´­èµå›æ•°é‡
+	///½ñÈÕÉê¹ºÊê»ØÊıÁ¿
 	TSecurityFtdcVolumeType	TodayPurRedVolume;
-	///æŠ˜ç®—ç‡
+	///ÕÛËãÂÊ
 	TSecurityFtdcRatioType	ConversionRate;
-	///æŠ˜ç®—é‡‘é¢
+	///ÕÛËã½ğ¶î
 	TSecurityFtdcMoneyType	ConversionAmount;
-	///è¯åˆ¸ä»·å€¼
+	///Ö¤È¯¼ÛÖµ
 	TSecurityFtdcMoneyType	StockValue;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
 	///AccountID
 	TSecurityFtdcAccountIDType	AccountID;
-	///è´¨æŠ¼å…¥åº“æ•°é‡
+	///ÖÊÑºÈë¿âÊıÁ¿
 	TSecurityFtdcVolumeType	PledgeInPosition;
-	///æ­£å›è´­ä½¿ç”¨çš„æ ‡å‡†åˆ¸æ•°é‡
+	///Õı»Ø¹ºÊ¹ÓÃµÄ±ê×¼È¯ÊıÁ¿
 	TSecurityFtdcVolumeType	RepurchasePosition;
-	///ETFç”³èµç©ºå¤´å†»ç»“
+	///ETFÉêÊê¿ÕÍ·¶³½á
 	TSecurityFtdcVolumeType	PurRedShortFrozen;
-	///èèµ„ä¹°å…¥å‡ºæ•°é‡
+	///ÈÚ×ÊÂòÈëÊıÁ¿
 	TSecurityFtdcVolumeType	MarginTradeVolume;
-	///èèµ„ä¹°å…¥é‡‘é¢
+	///ÈÚ×ÊÂòÈë½ğ¶î
 	TSecurityFtdcMoneyType	MarginTradeAmount;
-	///èèµ„ä¹°å…¥å†»ç»“æ•°é‡
+	///ÈÚ×ÊÂòÈë¶³½áÊıÁ¿
 	TSecurityFtdcVolumeType	MarginTradeFrozenVolume;
-	///èèµ„ä¹°å…¥å†»ç»“é‡‘é¢
+	///ÈÚ×ÊÂòÈë¶³½á½ğ¶î
 	TSecurityFtdcMoneyType	MarginTradeFrozenAmount;
-	///èèµ„ä¹°å…¥ç›ˆäº
+	///ÈÚ×ÊÂòÈëÓ¯¿÷
 	TSecurityFtdcMoneyType	MarginTradeConversionProfit;
-	///èåˆ¸å–å‡ºæ•°é‡
+	///ÈÚÈ¯Âô³öÊıÁ¿
 	TSecurityFtdcVolumeType	ShortSellVolume;
-	///èåˆ¸å–å‡ºé‡‘é¢
+	///ÈÚÈ¯Âô³ö½ğ¶î
 	TSecurityFtdcMoneyType	ShortSellAmount;
-	///èåˆ¸å–å‡ºå†»ç»“æ•°é‡
+	///ÈÚÈ¯Âô³ö¶³½áÊıÁ¿
 	TSecurityFtdcVolumeType	ShortSellFrozenVolume;
-	///èåˆ¸å–å‡ºå†»ç»“é‡‘é¢
+	///ÈÚÈ¯Âô³ö¶³½á½ğ¶î
 	TSecurityFtdcMoneyType	ShortSellFrozenAmount;
-	///èåˆ¸å–å‡ºç›ˆäº
+	///ÈÚÈ¯Âô³öÓ¯¿÷
 	TSecurityFtdcMoneyType	ShortSellConversionProfit;
-	///èåˆ¸æ€»å¸‚å€¼
+	///ÈÚÈ¯×ÜÊĞÖµ
 	TSecurityFtdcMoneyType	SSStockValue;
-	///ä»Šæ—¥èèµ„æŒä»“
+	///½ñÈÕÈÚ×Ê³Ö²Ö
 	TSecurityFtdcVolumeType	TodayMTPosition;
-	///ä»Šæ—¥èåˆ¸æŒä»“
+	///½ñÈÕÈÚÈ¯³Ö²Ö
 	TSecurityFtdcVolumeType	TodaySSPosition;
-	///å†å²æŒä»“å¼€ä»“æˆæœ¬
+	///ÀúÊ·³Ö²Ö¿ª²Ö³É±¾
 	TSecurityFtdcMoneyType	YdOpenCost;
+	///Ëø¶¨²ÖÎ»
+	TSecurityFtdcVolumeType	LockPosition;
+	///±¸¶Ò²ÖÎ»
+	TSecurityFtdcVolumeType	CoverPosition;
+	///Ëø¶¨¶³½á²ÖÎ»
+	TSecurityFtdcVolumeType	LockFrozenPosition;
+	///½âËø¶³½á²ÖÎ»
+	TSecurityFtdcVolumeType	UnlockFrozenPosition;
+	///±¸¶Ò¶³½á²ÖÎ»
+	TSecurityFtdcVolumeType	CoverFrozenPosition;
+	///ĞĞÈ¨¶³½á²ÖÎ»
+	TSecurityFtdcVolumeType	ExecFrozenPosition;
+	///ÉÏÈÕ±¸¶Ò²ÖÎ»
+	TSecurityFtdcVolumeType	YDCoverPosition;
 };
 
-///å‡ºå…¥é‡‘åŒæ­¥
+///³öÈë½ğÍ¬²½
 struct CSecurityFtdcSyncDepositField
 {
-	///å‡ºå…¥é‡‘æµæ°´å·
+	///³öÈë½ğÁ÷Ë®ºÅ
 	TSecurityFtdcDepositSeqNoType	DepositSeqNo;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///å…¥é‡‘é‡‘é¢
+	///Èë½ğ½ğ¶î
 	TSecurityFtdcMoneyType	Deposit;
-	///æ˜¯å¦å¼ºåˆ¶è¿›è¡Œ
+	///ÊÇ·ñÇ¿ÖÆ½øĞĞ
 	TSecurityFtdcBoolType	IsForce;
-	///è´¦æˆ·ä»£
+	///ÕË»§´ú
 	TSecurityFtdcAccountIDType	AccountID;
 };
 
-///æŸ¥è¯¢äº¤æ˜“æ‰€
+///²éÑ¯½»Ò×Ëù
 struct CSecurityFtdcQryExchangeField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
 };
 
-///æŸ¥è¯¢äº§å“
+///²éÑ¯²úÆ·
 struct CSecurityFtdcQryProductField
 {
-	///äº§å“ä»£ç 
+	///²úÆ·´úÂë
 	TSecurityFtdcInstrumentIDType	ProductID;
 };
 
-///æŸ¥è¯¢åˆçº¦
+///²éÑ¯ºÏÔ¼
 struct CSecurityFtdcQryInstrumentField
 {
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
 	TSecurityFtdcExchangeInstIDType	ExchangeInstID;
-	///äº§å“ä»£ç 
+	///²úÆ·´úÂë
 	TSecurityFtdcInstrumentIDType	ProductID;
 };
 
-///æŸ¥è¯¢ç»çºªå…¬å¸
+///²éÑ¯¾­¼Í¹«Ë¾
 struct CSecurityFtdcQryBrokerField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
 };
 
-///æŸ¥è¯¢ç»çºªå…¬å¸ä¼šå‘˜ä»£ç 
+///²éÑ¯¾­¼Í¹«Ë¾»áÔ±´úÂë
 struct CSecurityFtdcQryPartBrokerField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
 };
 
-///æŸ¥è¯¢æŠ•èµ„è€…
+///²éÑ¯Í¶×ÊÕß
 struct CSecurityFtdcQryInvestorField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
 };
 
-///æŸ¥è¯¢äº¤æ˜“ç¼–ç 
+///²éÑ¯½»Ò×±àÂë
 struct CSecurityFtdcQryTradingCodeField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///å®¢æˆ·ä»£ç 
+	///¿Í»§´úÂë
 	TSecurityFtdcClientIDType	ClientID;
 };
 
-///æŸ¥è¯¢ç®¡ç†ç”¨æˆ·
+///²éÑ¯¹ÜÀíÓÃ»§
 struct CSecurityFtdcQrySuperUserField
 {
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///æŸ¥è¯¢ç®¡ç†ç”¨æˆ·åŠŸèƒ½æƒé™
+///²éÑ¯¹ÜÀíÓÃ»§¹¦ÄÜÈ¨ÏŞ
 struct CSecurityFtdcQrySuperUserFunctionField
 {
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///æŸ¥è¯¢ç»çºªå…¬å¸ç”¨æˆ·
+///²éÑ¯¾­¼Í¹«Ë¾ÓÃ»§
 struct CSecurityFtdcQryBrokerUserField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///æŸ¥è¯¢ç»çºªå…¬å¸ç”¨æˆ·æƒé™
+///²éÑ¯¾­¼Í¹«Ë¾ÓÃ»§È¨ÏŞ
 struct CSecurityFtdcQryBrokerUserFunctionField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///æŸ¥è¯¢èµ„é‡‘è´¦æˆ·
+///²éÑ¯×Ê½ğÕË»§
 struct CSecurityFtdcQryTradingAccountField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
 };
 
-///æŸ¥è¯¢ç¦æ­¢ç™»å½•ç”¨æˆ·
+///²éÑ¯½ûÖ¹µÇÂ¼ÓÃ»§
 struct CSecurityFtdcQryLoginForbiddenUserField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///æŸ¥è¯¢è¡Œæƒ…
+///²éÑ¯ĞĞÇé
 struct CSecurityFtdcQryDepthMarketDataField
 {
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
 };
 
-///æŸ¥è¯¢åˆçº¦äº¤æ˜“æƒé™
+///²éÑ¯ºÏÔ¼½»Ò×È¨ÏŞ
 struct CSecurityFtdcQryInstrumentTradingRightField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
 };
 
-///æŸ¥è¯¢æŠ•èµ„è€…æŒä»“æ˜ç»†
+///²éÑ¯Í¶×ÊÕß³Ö²ÖÃ÷Ï¸
 struct CSecurityFtdcQryInvestorPositionDetailField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
 };
 
-///æŸ¥è¯¢å€ºåˆ¸åˆ©æ¯
+///²éÑ¯Õ®È¯ÀûÏ¢
 struct CSecurityFtdcQryBondInterestField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
 };
 
-///æŸ¥è¯¢å¸‚å€¼é…å”®ä¿¡æ¯
+///²éÑ¯ÊĞÖµÅäÊÛĞÅÏ¢
 struct CSecurityFtdcQryMarketRationInfoField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…å¸å·
+	///Í¶×ÊÕßÕÊºÅ
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
 };
 
-///æŸ¥è¯¢åˆçº¦æ‰‹ç»­è´¹ç‡
+///²éÑ¯ºÏÔ¼ÊÖĞø·ÑÂÊ
 struct CSecurityFtdcQryInstrumentCommissionRateField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///ä¹°å–æ–¹å‘
+	///ÂòÂô·½Ïò
 	TSecurityFtdcDirectionType	Direction;
+	///¿ªÆ½±êÖ¾
+	TSecurityFtdcOffsetFlagType	OffsetFlag;
 };
 
-///æŸ¥è¯¢ä½™åˆ¸ä¿¡æ¯
+///²éÑ¯ÓàÈ¯ĞÅÏ¢
 struct CSecurityFtdcQryExcessStockInfoField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
 };
 
-///æŸ¥è¯¢äº¤æ˜“å‘˜æŠ¥ç›˜æœº
+///²éÑ¯Í¶×ÊÕßÕÊ»§¹ØÏµ
+struct CSecurityFtdcQryInvestorAccountField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+};
+
+///²éÑ¯ETFºÏÔ¼
+struct CSecurityFtdcQryETFInstrumentField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ETFÖ¤È¯´úÂë
+	TSecurityFtdcInstrumentIDType	ETFInstrumentID;
+};
+
+///²éÑ¯ETF¹ÉÆ±Àº
+struct CSecurityFtdcQryETFBasketField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ETFÖ¤È¯´úÂë
+	TSecurityFtdcInstrumentIDType	ETFInstrumentID;
+};
+
+///²éÑ¯OFºÏÔ¼
+struct CSecurityFtdcQryOFInstrumentField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ETFÖ¤È¯´úÂë
+	TSecurityFtdcInstrumentIDType	OFInstrumentID;
+};
+
+///²éÑ¯SFºÏÔ¼
+struct CSecurityFtdcQrySFInstrumentField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ETFÖ¤È¯´úÂë
+	TSecurityFtdcInstrumentIDType	SFInstrumentID;
+};
+
+///²éÑ¯ºÏÔ¼µ¥ÊÖ±£Ö¤½ğ
+struct CSecurityFtdcQryInstrumentUnitMarginField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+};
+
+///²éÑ¯ÆÚÈ¨×Ê½ğÏŞÖÆ²ÎÊı
+struct CSecurityFtdcQryOptionsFundLimitParamField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+};
+
+///²éÑ¯Í¶×ÊÕßÆÚÈ¨³Ö²Ö
+struct CSecurityFtdcQryInvestorOptionsPositionField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///±êµÄºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+};
+
+///²éÑ¯Ô¤½»¸îĞÅÏ¢
+struct CSecurityFtdcQryPreDelivInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+};
+
+///²éÑ¯¿ÉÈÚÈ¯·ÖÅäĞÅÏ¢
+struct CSecurityFtdcQryCreditStockAssignInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+};
+
+///²éÑ¯¿ÉÈÚ×Ê·ÖÅäĞÅÏ¢
+struct CSecurityFtdcQryCreditCashAssignInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+};
+
+///²éÑ¯Ö¤È¯ÕÛËãÂÊ
+struct CSecurityFtdcQryConversionRateField
+{
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+};
+
+///²éÑ¯ÀúÊ·ĞÅÓÃ¸ºÕ®ĞÅÏ¢
+struct CSecurityFtdcQryHisCreditDebtInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///½»Ò×Ëù´úÂë
+	TSecurityFtdcExchangeIDType	ExchangeID;
+	///ºÏÔ¼´úÂë
+	TSecurityFtdcInstrumentIDType	InstrumentID;
+};
+
+///²éÑ¯½»Ò×Ô±±¨ÅÌ»ú
 struct CSecurityFtdcQryTraderOfferField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
 };
 
-///æŸ¥è¯¢è¡Œæƒ…æŠ¥ç›˜æœº
+///²éÑ¯ĞĞÇé±¨ÅÌ»ú
 struct CSecurityFtdcQryMDTraderOfferField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ä¼šå‘˜ä»£ç 
+	///»áÔ±´úÂë
 	TSecurityFtdcParticipantIDType	ParticipantID;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
 };
 
-///æŸ¥è¯¢å‰ç½®çŠ¶æ€
+///²éÑ¯Ç°ÖÃ×´Ì¬
 struct CSecurityFtdcQryFrontStatusField
 {
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
 };
 
-///æŸ¥è¯¢ç”¨æˆ·ä¼šè¯
+///²éÑ¯ÓÃ»§»á»°
 struct CSecurityFtdcQryUserSessionField
 {
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///æŸ¥è¯¢æŠ¥å•
+///²éÑ¯±¨µ¥
 struct CSecurityFtdcQryOrderField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æŠ¥å•ç¼–å·
+	///±¨µ¥±àºÅ
 	TSecurityFtdcOrderSysIDType	OrderSysID;
-	///å¼€å§‹æ—¶é—´
+	///¿ªÊ¼Ê±¼ä
 	TSecurityFtdcTimeType	InsertTimeStart;
-	///ç»“æŸæ—¶é—´
+	///½áÊøÊ±¼ä
 	TSecurityFtdcTimeType	InsertTimeEnd;
 };
 
-///æŸ¥è¯¢æŠ¥å•æ“ä½œ
+///²éÑ¯±¨µ¥²Ù×÷
 struct CSecurityFtdcQryOrderActionField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
 };
 
-///æŸ¥è¯¢é”™è¯¯æŠ¥å•
+///²éÑ¯´íÎó±¨µ¥
 struct CSecurityFtdcQryErrOrderField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
 };
 
-///æŸ¥è¯¢é”™è¯¯æŠ¥å•æ“ä½œ
+///²éÑ¯´íÎó±¨µ¥²Ù×÷
 struct CSecurityFtdcQryErrOrderActionField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
 };
 
-///æŸ¥è¯¢æˆäº¤
+///²éÑ¯³É½»
 struct CSecurityFtdcQryTradeField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æˆäº¤ç¼–å·
+	///³É½»±àºÅ
 	TSecurityFtdcTradeIDType	TradeID;
-	///å¼€å§‹æ—¶é—´
+	///¿ªÊ¼Ê±¼ä
 	TSecurityFtdcTimeType	TradeTimeStart;
-	///ç»“æŸæ—¶é—´
+	///½áÊøÊ±¼ä
 	TSecurityFtdcTimeType	TradeTimeEnd;
 };
 
-///æŸ¥è¯¢æŠ•èµ„è€…æŒä»“
+///²éÑ¯Í¶×ÊÕß³Ö²Ö
 struct CSecurityFtdcQryInvestorPositionField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
 };
 
-///æŸ¥è¯¢å‡ºå…¥é‡‘æµæ°´
+///²éÑ¯³öÈë½ğÁ÷Ë®
 struct CSecurityFtdcQrySyncDepositField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///å‡ºå…¥é‡‘æµæ°´å·
+	///³öÈë½ğÁ÷Ë®ºÅ
 	TSecurityFtdcDepositSeqNoType	DepositSeqNo;
 };
 
-///ç”¨æˆ·å£ä»¤å˜æ›´
+///ÓÃ»§¿ÚÁî±ä¸ü
 struct CSecurityFtdcUserPasswordUpdateField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///åŸæ¥çš„å£ä»¤
+	///Ô­À´µÄ¿ÚÁî
 	TSecurityFtdcPasswordType	OldPassword;
-	///æ–°çš„å£ä»¤
+	///ĞÂµÄ¿ÚÁî
 	TSecurityFtdcPasswordType	NewPassword;
 };
 
-///èµ„é‡‘è´¦æˆ·å£ä»¤å˜æ›´åŸŸ
+///×Ê½ğÕË»§¿ÚÁî±ä¸üÓò
 struct CSecurityFtdcTradingAccountPasswordUpdateField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…å¸å·
+	///Í¶×ÊÕßÕÊºÅ
 	TSecurityFtdcAccountIDType	AccountID;
-	///åŸæ¥çš„å£ä»¤
+	///Ô­À´µÄ¿ÚÁî
 	TSecurityFtdcPasswordType	OldPassword;
-	///æ–°çš„å£ä»¤
+	///ĞÂµÄ¿ÚÁî
 	TSecurityFtdcPasswordType	NewPassword;
 };
 
-///æ‰‹å·¥åŒæ­¥ç”¨æˆ·åŠ¨æ€ä»¤ç‰Œ
+///ÊÖ¹¤Í¬²½ÓÃ»§¶¯Ì¬ÁîÅÆ
 struct CSecurityFtdcManualSyncBrokerUserOTPField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///åŠ¨æ€ä»¤ç‰Œç±»å‹
+	///¶¯Ì¬ÁîÅÆÀàĞÍ
 	TSecurityFtdcOTPTypeType	OTPType;
-	///ç¬¬ä¸€ä¸ªåŠ¨æ€å¯†ç 
+	///µÚÒ»¸ö¶¯Ì¬ÃÜÂë
 	TSecurityFtdcPasswordType	FirstOTP;
-	///ç¬¬äºŒä¸ªåŠ¨æ€å¯†ç 
+	///µÚ¶ş¸ö¶¯Ì¬ÃÜÂë
 	TSecurityFtdcPasswordType	SecondOTP;
 };
 
-///ç»çºªå…¬å¸ç”¨æˆ·å£ä»¤
+///¾­¼Í¹«Ë¾ÓÃ»§¿ÚÁî
 struct CSecurityFtdcBrokerUserPasswordField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///å¯†ç 
+	///ÃÜÂë
 	TSecurityFtdcPasswordType	Password;
 };
 
-///èµ„é‡‘è´¦æˆ·å£ä»¤åŸŸ
+///×Ê½ğÕË»§¿ÚÁîÓò
 struct CSecurityFtdcTradingAccountPasswordField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…å¸å·
+	///Í¶×ÊÕßÕÊºÅ
 	TSecurityFtdcAccountIDType	AccountID;
-	///å¯†ç 
+	///ÃÜÂë
 	TSecurityFtdcPasswordType	Password;
 };
 
-///ç”¨æˆ·æƒé™
+///ÓÃ»§È¨ÏŞ
 struct CSecurityFtdcUserRightField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///å®¢æˆ·æƒé™ç±»å‹
+	///¿Í»§È¨ÏŞÀàĞÍ
 	TSecurityFtdcUserRightTypeType	UserRightType;
-	///æ˜¯å¦ç¦æ­¢
+	///ÊÇ·ñ½ûÖ¹
 	TSecurityFtdcBoolType	IsForbidden;
 };
 
-///æŠ•èµ„è€…è´¦æˆ·
+///Í¶×ÊÕßÕË»§
 struct CSecurityFtdcInvestorAccountField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///æŠ•èµ„è€…å¸å·
+	///Í¶×ÊÕßÕÊºÅ
 	TSecurityFtdcAccountIDType	AccountID;
-	///æ˜¯å¦ä¸»è´¦æˆ·
+	///ÊÇ·ñÖ÷ÕË»§
 	TSecurityFtdcBoolType	IsDefault;
-	///è´¦æˆ·ç±»å‹
+	///ÕË»§ÀàĞÍ
 	TSecurityFtdcAccountTypeType	AccountType;
-	///æ˜¯å¦æ´»è·ƒ
+	///ÊÇ·ñ»îÔ¾
 	TSecurityFtdcBoolType	IsActive;
+	///ÉÏ½»Ëù½»Ò×µ¥ÔªºÅ
+	TSecurityFtdcTraderIDType	SHBranchPBU;
+	///Éî½»Ëù½»Ò×µ¥ÔªºÅ
+	TSecurityFtdcTraderIDType	SZBranchPBU;
 };
 
-///ç”¨æˆ·IP
+///ÓÃ»§IP
 struct CSecurityFtdcUserIPField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///IPåœ°å€
+	///IPµØÖ·
 	TSecurityFtdcIPAddressType	IPAddress;
-	///IPåœ°å€æ©ç 
+	///IPµØÖ·ÑÚÂë
 	TSecurityFtdcIPAddressType	IPMask;
-	///Macåœ°å€
+	///MacµØÖ·
 	TSecurityFtdcMacAddressType	MacAddress;
 };
 
-///ç”¨æˆ·åŠ¨æ€ä»¤ç‰Œå‚æ•°
+///ÓÃ»§¶¯Ì¬ÁîÅÆ²ÎÊı
 struct CSecurityFtdcBrokerUserOTPParamField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///åŠ¨æ€ä»¤ç‰Œæä¾›å•†
+	///¶¯Ì¬ÁîÅÆÌá¹©ÉÌ
 	TSecurityFtdcOTPVendorsIDType	OTPVendorsID;
-	///åŠ¨æ€ä»¤ç‰Œåºåˆ—å·
+	///¶¯Ì¬ÁîÅÆĞòÁĞºÅ
 	TSecurityFtdcSerialNumberType	SerialNumber;
-	///ä»¤ç‰Œå¯†é’¥
+	///ÁîÅÆÃÜÔ¿
 	TSecurityFtdcAuthKeyType	AuthKey;
-	///æ¼‚ç§»å€¼
+	///Æ¯ÒÆÖµ
 	TSecurityFtdcLastDriftType	LastDrift;
-	///æˆåŠŸå€¼
+	///³É¹¦Öµ
 	TSecurityFtdcLastSuccessType	LastSuccess;
-	///åŠ¨æ€ä»¤ç‰Œç±»å‹
+	///¶¯Ì¬ÁîÅÆÀàĞÍ
 	TSecurityFtdcOTPTypeType	OTPType;
 };
 
-///ç”¨æˆ·ç™»å½•è¯·æ±‚
+///ÓÃ»§µÇÂ¼ÇëÇó
 struct CSecurityFtdcReqUserLoginField
 {
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///å¯†ç 
+	///ÃÜÂë
 	TSecurityFtdcPasswordType	Password;
-	///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
 	TSecurityFtdcProductInfoType	UserProductInfo;
-	///æ¥å£ç«¯äº§å“ä¿¡æ¯
+	///½Ó¿Ú¶Ë²úÆ·ĞÅÏ¢
 	TSecurityFtdcProductInfoType	InterfaceProductInfo;
-	///åè®®ä¿¡æ¯
+	///Ğ­ÒéĞÅÏ¢
 	TSecurityFtdcProtocolInfoType	ProtocolInfo;
-	///Macåœ°å€
+	///MacµØÖ·
 	TSecurityFtdcMacAddressType	MacAddress;
-	///åŠ¨æ€å¯†ç 
+	///¶¯Ì¬ÃÜÂë
 	TSecurityFtdcPasswordType	OneTimePassword;
-	///ç»ˆç«¯IPåœ°å€
+	///ÖÕ¶ËIPµØÖ·
 	TSecurityFtdcIPAddressType	ClientIPAddress;
-	///å®¢æˆ·ç«¯è®¤è¯ç 
+	///¿Í»§¶ËÈÏÖ¤Âë
 	TSecurityFtdcAuthCodeType	AuthCode;
 };
 
-///ç”¨æˆ·ç™»å½•åº”ç­”
+///ÓÃ»§µÇÂ¼Ó¦´ğ
 struct CSecurityFtdcRspUserLoginField
 {
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///ç™»å½•æˆåŠŸæ—¶é—´
+	///µÇÂ¼³É¹¦Ê±¼ä
 	TSecurityFtdcTimeType	LoginTime;
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///äº¤æ˜“ç³»ç»Ÿåç§°
+	///½»Ò×ÏµÍ³Ãû³Æ
 	TSecurityFtdcSystemNameType	SystemName;
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///æœ€å¤§æŠ¥å•å¼•ç”¨
+	///×î´ó±¨µ¥ÒıÓÃ
 	TSecurityFtdcOrderRefType	MaxOrderRef;
 };
 
-///ç”¨æˆ·ç™»å‡ºè¯·æ±‚
+///ÓÃ»§µÇ³öÇëÇó
 struct CSecurityFtdcUserLogoutField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///å…¨éƒ¨ç™»å‡ºä¿¡æ¯
+///È«²¿µÇ³öĞÅÏ¢
 struct CSecurityFtdcLogoutAllField
 {
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///ç³»ç»Ÿåç§°
+	///ÏµÍ³Ãû³Æ
 	TSecurityFtdcSystemNameType	SystemName;
 };
 
-///å¼ºåˆ¶äº¤æ˜“å‘˜é€€å‡º
+///Ç¿ÖÆ½»Ò×Ô±ÍË³ö
 struct CSecurityFtdcForceUserLogoutField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
 };
 
-///è¾“å…¥æŠ¥å•
+///¾­¼Í¹«Ë¾ÓÃ»§¼¤»î
+struct CSecurityFtdcActivateBrokerUserField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///ÓÃ»§´úÂë
+	TSecurityFtdcUserIDType	UserID;
+};
+
+///ÊäÈë±¨µ¥
 struct CSecurityFtdcInputOrderField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///æŠ¥å•å¼•ç”¨
+	///±¨µ¥ÒıÓÃ
 	TSecurityFtdcOrderRefType	OrderRef;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æŠ¥å•ä»·æ ¼æ¡ä»¶
+	///±¨µ¥¼Û¸ñÌõ¼ş
 	TSecurityFtdcOrderPriceTypeType	OrderPriceType;
-	///ä¹°å–æ–¹å‘
+	///ÂòÂô·½Ïò
 	TSecurityFtdcDirectionType	Direction;
-	///ç»„åˆå¼€å¹³æ ‡å¿—
+	///×éºÏ¿ªÆ½±êÖ¾
 	TSecurityFtdcCombOffsetFlagType	CombOffsetFlag;
-	///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+	///×éºÏÍ¶»úÌ×±£±êÖ¾
 	TSecurityFtdcCombHedgeFlagType	CombHedgeFlag;
-	///ä»·æ ¼
+	///¼Û¸ñ
 	TSecurityFtdcStockPriceType	LimitPrice;
-	///æ•°é‡
+	///ÊıÁ¿
 	TSecurityFtdcVolumeType	VolumeTotalOriginal;
-	///æœ‰æ•ˆæœŸç±»å‹
+	///ÓĞĞ§ÆÚÀàĞÍ
 	TSecurityFtdcTimeConditionType	TimeCondition;
-	///GTDæ—¥æœŸ
+	///GTDÈÕÆÚ
 	TSecurityFtdcDateType	GTDDate;
-	///æˆäº¤é‡ç±»å‹
+	///³É½»Á¿ÀàĞÍ
 	TSecurityFtdcVolumeConditionType	VolumeCondition;
-	///æœ€å°æˆäº¤é‡
+	///×îĞ¡³É½»Á¿
 	TSecurityFtdcVolumeType	MinVolume;
-	///è§¦å‘æ¡ä»¶
+	///´¥·¢Ìõ¼ş
 	TSecurityFtdcContingentConditionType	ContingentCondition;
-	///æ­¢æŸä»·
+	///Ö¹Ëğ¼Û
 	TSecurityFtdcPriceType	StopPrice;
-	///å¼ºå¹³åŸå› 
+	///Ç¿Æ½Ô­Òò
 	TSecurityFtdcForceCloseReasonType	ForceCloseReason;
-	///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+	///×Ô¶¯¹ÒÆğ±êÖ¾
 	TSecurityFtdcBoolType	IsAutoSuspend;
-	///ä¸šåŠ¡å•å…ƒ
+	///ÒµÎñµ¥Ôª
 	TSecurityFtdcBusinessUnitType	BusinessUnit;
-	///è¯·æ±‚ç¼–å·
+	///ÇëÇó±àºÅ
 	TSecurityFtdcRequestIDType	RequestID;
-	///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+	///ÓÃ»§Ç¿ÆÀ±êÖ¾
 	TSecurityFtdcBoolType	UserForceClose;
 };
 
-///è¾“å…¥æŠ¥å•æ“ä½œ
+///ÊäÈë±¨µ¥²Ù×÷
 struct CSecurityFtdcInputOrderActionField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///æŠ¥å•æ“ä½œå¼•ç”¨
+	///±¨µ¥²Ù×÷ÒıÓÃ
 	TSecurityFtdcOrderActionRefType	OrderActionRef;
-	///æŠ¥å•å¼•ç”¨
+	///±¨µ¥ÒıÓÃ
 	TSecurityFtdcOrderRefType	OrderRef;
-	///è¯·æ±‚ç¼–å·
+	///ÇëÇó±àºÅ
 	TSecurityFtdcRequestIDType	RequestID;
-	///å‰ç½®ç¼–å·
+	///Ç°ÖÃ±àºÅ
 	TSecurityFtdcFrontIDType	FrontID;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
-	///æ“ä½œæ ‡å¿—
+	///²Ù×÷±êÖ¾
 	TSecurityFtdcActionFlagType	ActionFlag;
-	///ä»·æ ¼
+	///¼Û¸ñ
 	TSecurityFtdcPriceType	LimitPrice;
-	///æ•°é‡å˜åŒ–
+	///ÊıÁ¿±ä»¯
 	TSecurityFtdcVolumeType	VolumeChange;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+	///½»Ò×Ëù½»Ò×Ô±´úÂë
 	TSecurityFtdcTraderIDType	BranchPBU;
-	///æœ¬åœ°æŠ¥å•ç¼–å·
+	///±¾µØ±¨µ¥±àºÅ
 	TSecurityFtdcOrderLocalIDType	OrderLocalID;
 };
 
-///æŒ‡å®šçš„åˆçº¦
+///Ö¸¶¨µÄºÏÔ¼
 struct CSecurityFtdcSpecificInstrumentField
 {
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
 };
 
-///æŒ‡å®šçš„äº¤æ˜“æ‰€
+///Ö¸¶¨µÄ½»Ò×Ëù
 struct CSecurityFtdcSpecificExchangeField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
 };
 
-///è¡Œæƒ…åŸºç¡€å±æ€§
+///ĞĞÇé»ù´¡ÊôĞÔ
 struct CSecurityFtdcMarketDataBaseField
 {
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///ä¸Šæ¬¡ç»“ç®—ä»·
+	///ÉÏ´Î½áËã¼Û
 	TSecurityFtdcPriceType	PreSettlementPrice;
-	///æ˜¨æ”¶ç›˜
+	///×òÊÕÅÌ
 	TSecurityFtdcPriceType	PreClosePrice;
-	///æ˜¨æŒä»“é‡
+	///×ò³Ö²ÖÁ¿
 	TSecurityFtdcLargeVolumeType	PreOpenInterest;
-	///æ˜¨è™šå®åº¦
+	///×òĞéÊµ¶È
 	TSecurityFtdcRatioType	PreDelta;
 };
 
-///è¡Œæƒ…é™æ€å±æ€§
+///ĞĞÇé¾²Ì¬ÊôĞÔ
 struct CSecurityFtdcMarketDataStaticField
 {
-	///ä»Šå¼€ç›˜
+	///½ñ¿ªÅÌ
 	TSecurityFtdcPriceType	OpenPrice;
-	///æœ€é«˜ä»·
+	///×î¸ß¼Û
 	TSecurityFtdcPriceType	HighestPrice;
-	///æœ€ä½ä»·
+	///×îµÍ¼Û
 	TSecurityFtdcPriceType	LowestPrice;
-	///ä»Šæ”¶ç›˜
+	///½ñÊÕÅÌ
 	TSecurityFtdcPriceType	ClosePrice;
-	///æ¶¨åœæ¿ä»·
+	///ÕÇÍ£°å¼Û
 	TSecurityFtdcPriceType	UpperLimitPrice;
-	///è·Œåœæ¿ä»·
+	///µøÍ£°å¼Û
 	TSecurityFtdcPriceType	LowerLimitPrice;
-	///æœ¬æ¬¡ç»“ç®—ä»·
+	///±¾´Î½áËã¼Û
 	TSecurityFtdcPriceType	SettlementPrice;
-	///ä»Šè™šå®åº¦
+	///½ñĞéÊµ¶È
 	TSecurityFtdcRatioType	CurrDelta;
 };
 
-///è¡Œæƒ…æœ€æ–°æˆäº¤å±æ€§
+///ĞĞÇé×îĞÂ³É½»ÊôĞÔ
 struct CSecurityFtdcMarketDataLastMatchField
 {
-	///æœ€æ–°ä»·
+	///×îĞÂ¼Û
 	TSecurityFtdcPriceType	LastPrice;
-	///æ•°é‡
+	///ÊıÁ¿
 	TSecurityFtdcVolumeType	Volume;
-	///æˆäº¤é‡‘é¢
+	///³É½»½ğ¶î
 	TSecurityFtdcMoneyType	Turnover;
-	///æŒä»“é‡
+	///³Ö²ÖÁ¿
 	TSecurityFtdcLargeVolumeType	OpenInterest;
+	///ÊıÁ¿(ĞÂ)
+	TSecurityFtdcLargeVolumeType	Volume_New;
 };
 
-///è¡Œæƒ…æœ€ä¼˜ä»·å±æ€§
+///ĞĞÇé×îÓÅ¼ÛÊôĞÔ
 struct CSecurityFtdcMarketDataBestPriceField
 {
-	///ç”³ä¹°ä»·ä¸€
+	///ÉêÂò¼ÛÒ»
 	TSecurityFtdcPriceType	BidPrice1;
-	///ç”³ä¹°é‡ä¸€
+	///ÉêÂòÁ¿Ò»
 	TSecurityFtdcVolumeType	BidVolume1;
-	///ç”³å–ä»·ä¸€
+	///ÉêÂô¼ÛÒ»
 	TSecurityFtdcPriceType	AskPrice1;
-	///ç”³å–é‡ä¸€
+	///ÉêÂôÁ¿Ò»
 	TSecurityFtdcVolumeType	AskVolume1;
 };
 
-///è¡Œæƒ…ç”³ä¹°äºŒã€ä¸‰å±æ€§
+///ĞĞÇéÉêÂò¶ş¡¢ÈıÊôĞÔ
 struct CSecurityFtdcMarketDataBid23Field
 {
-	///ç”³ä¹°ä»·äºŒ
+	///ÉêÂò¼Û¶ş
 	TSecurityFtdcPriceType	BidPrice2;
-	///ç”³ä¹°é‡äºŒ
+	///ÉêÂòÁ¿¶ş
 	TSecurityFtdcVolumeType	BidVolume2;
-	///ç”³ä¹°ä»·ä¸‰
+	///ÉêÂò¼ÛÈı
 	TSecurityFtdcPriceType	BidPrice3;
-	///ç”³ä¹°é‡ä¸‰
+	///ÉêÂòÁ¿Èı
 	TSecurityFtdcVolumeType	BidVolume3;
 };
 
-///è¡Œæƒ…ç”³å–äºŒã€ä¸‰å±æ€§
+///ĞĞÇéÉêÂô¶ş¡¢ÈıÊôĞÔ
 struct CSecurityFtdcMarketDataAsk23Field
 {
-	///ç”³å–ä»·äºŒ
+	///ÉêÂô¼Û¶ş
 	TSecurityFtdcPriceType	AskPrice2;
-	///ç”³å–é‡äºŒ
+	///ÉêÂôÁ¿¶ş
 	TSecurityFtdcVolumeType	AskVolume2;
-	///ç”³å–ä»·ä¸‰
+	///ÉêÂô¼ÛÈı
 	TSecurityFtdcPriceType	AskPrice3;
-	///ç”³å–é‡ä¸‰
+	///ÉêÂôÁ¿Èı
 	TSecurityFtdcVolumeType	AskVolume3;
 };
 
-///è¡Œæƒ…ç”³ä¹°å››ã€äº”å±æ€§
+///ĞĞÇéÉêÂòËÄ¡¢ÎåÊôĞÔ
 struct CSecurityFtdcMarketDataBid45Field
 {
-	///ç”³ä¹°ä»·å››
+	///ÉêÂò¼ÛËÄ
 	TSecurityFtdcPriceType	BidPrice4;
-	///ç”³ä¹°é‡å››
+	///ÉêÂòÁ¿ËÄ
 	TSecurityFtdcVolumeType	BidVolume4;
-	///ç”³ä¹°ä»·äº”
+	///ÉêÂò¼ÛÎå
 	TSecurityFtdcPriceType	BidPrice5;
-	///ç”³ä¹°é‡äº”
+	///ÉêÂòÁ¿Îå
 	TSecurityFtdcVolumeType	BidVolume5;
 };
 
-///è¡Œæƒ…ç”³å–å››ã€äº”å±æ€§
+///ĞĞÇéÉêÂôËÄ¡¢ÎåÊôĞÔ
 struct CSecurityFtdcMarketDataAsk45Field
 {
-	///ç”³å–ä»·å››
+	///ÉêÂô¼ÛËÄ
 	TSecurityFtdcPriceType	AskPrice4;
-	///ç”³å–é‡å››
+	///ÉêÂôÁ¿ËÄ
 	TSecurityFtdcVolumeType	AskVolume4;
-	///ç”³å–ä»·äº”
+	///ÉêÂô¼ÛÎå
 	TSecurityFtdcPriceType	AskPrice5;
-	///ç”³å–é‡äº”
+	///ÉêÂôÁ¿Îå
 	TSecurityFtdcVolumeType	AskVolume5;
 };
 
-///è¡Œæƒ…æ›´æ–°æ—¶é—´å±æ€§
+///ĞĞÇé¸üĞÂÊ±¼äÊôĞÔ
 struct CSecurityFtdcMarketDataUpdateTimeField
 {
-	///åˆçº¦ä»£ç 
+	///ºÏÔ¼´úÂë
 	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///æœ€åä¿®æ”¹æ—¶é—´
+	///×îºóĞŞ¸ÄÊ±¼ä
 	TSecurityFtdcTimeType	UpdateTime;
-	///æœ€åä¿®æ”¹æ¯«ç§’
+	///×îºóĞŞ¸ÄºÁÃë
 	TSecurityFtdcMillisecType	UpdateMillisec;
-	///ä¸šåŠ¡æ—¥æœŸ
+	///ÒµÎñÈÕÆÚ
 	TSecurityFtdcDateType	ActionDay;
 };
 
-///æˆäº¤å‡ä»·
+///³É½»¾ù¼Û
 struct CSecurityFtdcMarketDataAveragePriceField
 {
-	///å½“æ—¥å‡ä»·
+	///µ±ÈÕ¾ù¼Û
 	TSecurityFtdcPriceType	AveragePrice;
 };
 
-///è¡Œæƒ…äº¤æ˜“æ‰€ä»£ç å±æ€§
+///ĞĞÇé½»Ò×Ëù´úÂëÊôĞÔ
 struct CSecurityFtdcMarketDataExchangeField
 {
-	///äº¤æ˜“æ‰€ä»£ç 
+	///½»Ò×Ëù´úÂë
 	TSecurityFtdcExchangeIDType	ExchangeID;
 };
 
-///ä¿¡æ¯åˆ†å‘
+///ĞÅÏ¢·Ö·¢
 struct CSecurityFtdcDisseminationField
 {
-	///åºåˆ—ç³»åˆ—å·
+	///ĞòÁĞÏµÁĞºÅ
 	TSecurityFtdcSequenceSeriesType	SequenceSeries;
-	///åºåˆ—å·
+	///ĞòÁĞºÅ
 	TSecurityFtdcSequenceNoType	SequenceNo;
 };
 
-///èµ„é‡‘è½¬è´¦è¾“å…¥
+///×Ê½ğ×ªÕËÊäÈë
 struct CSecurityFtdcInputFundTransferField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///æŠ•èµ„è€…èµ„é‡‘å¸å·
+	///Í¶×ÊÕß×Ê½ğÕÊºÅ
 	TSecurityFtdcAccountIDType	AccountID;
-	///èµ„é‡‘å¸æˆ·å¯†ç 
+	///×Ê½ğÕÊ»§ÃÜÂë
 	TSecurityFtdcPasswordType	Password;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///äº¤æ˜“é‡‘é¢
+	///½»Ò×½ğ¶î
 	TSecurityFtdcTradeAmountType	TradeAmount;
-	///æ‘˜è¦
+	///ÕªÒª
 	TSecurityFtdcDigestType	Digest;
-	///è´¦æˆ·ç±»å‹
+	///ÕË»§ÀàĞÍ
 	TSecurityFtdcAccountTypeType	AccountType;
 };
 
-///èµ„é‡‘è½¬è´¦
+///×Ê½ğ×ªÕË
 struct CSecurityFtdcFundTransferField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…ä»£ç 
+	///Í¶×ÊÕß´úÂë
 	TSecurityFtdcInvestorIDType	InvestorID;
-	///æŠ•èµ„è€…èµ„é‡‘å¸å·
+	///Í¶×ÊÕß×Ê½ğÕÊºÅ
 	TSecurityFtdcAccountIDType	AccountID;
-	///èµ„é‡‘å¸æˆ·å¯†ç 
+	///×Ê½ğÕÊ»§ÃÜÂë
 	TSecurityFtdcPasswordType	Password;
-	///ç”¨æˆ·ä»£ç 
+	///ÓÃ»§´úÂë
 	TSecurityFtdcUserIDType	UserID;
-	///äº¤æ˜“é‡‘é¢
+	///½»Ò×½ğ¶î
 	TSecurityFtdcTradeAmountType	TradeAmount;
-	///æ‘˜è¦
+	///ÕªÒª
 	TSecurityFtdcDigestType	Digest;
-	///ä¼šè¯ç¼–å·
+	///»á»°±àºÅ
 	TSecurityFtdcSessionIDType	SessionID;
-	///Liberæ ¸å¿ƒæµæ°´å·
+	///LiberºËĞÄÁ÷Ë®ºÅ
 	TSecurityFtdcLiberSerialType	LiberSerial;
-	///è½¬è´¦å¹³å°æµæ°´å·
+	///×ªÕËÆ½Ì¨Á÷Ë®ºÅ
 	TSecurityFtdcPlateSerialType	PlateSerial;
-	///ç¬¬ä¸‰æ–¹æµæ°´å·
+	///µÚÈı·½Á÷Ë®ºÅ
 	TSecurityFtdcBankSerialType	TransferSerial;
-	///äº¤æ˜“æ—¥
+	///½»Ò×ÈÕ
 	TSecurityFtdcDateType	TradingDay;
-	///è½¬è´¦æ—¶é—´
+	///×ªÕËÊ±¼ä
 	TSecurityFtdcTimeType	TradeTime;
-	///å‡ºå…¥é‡‘æ–¹å‘
+	///³öÈë½ğ·½Ïò
 	TSecurityFtdcFundDirectionType	FundDirection;
-	///é”™è¯¯ä»£ç 
+	///´íÎó´úÂë
 	TSecurityFtdcErrorIDType	ErrorID;
-	///é”™è¯¯ä¿¡æ¯
+	///´íÎóĞÅÏ¢
 	TSecurityFtdcErrorMsgType	ErrorMsg;
 };
 
-///èµ„é‡‘è½¬è´¦æŸ¥è¯¢è¯·æ±‚
+///×Ê½ğ×ªÕË²éÑ¯ÇëÇó
 struct CSecurityFtdcQryFundTransferSerialField
 {
-	///ç»çºªå…¬å¸ä»£ç 
+	///¾­¼Í¹«Ë¾´úÂë
 	TSecurityFtdcBrokerIDType	BrokerID;
-	///æŠ•èµ„è€…èµ„é‡‘å¸å·
+	///Í¶×ÊÕß×Ê½ğÕÊºÅ
 	TSecurityFtdcAccountIDType	AccountID;
-	///è´¦æˆ·ç±»å‹
+	///ÕË»§ÀàĞÍ
 	TSecurityFtdcAccountTypeType	AccountType;
+};
+
+///×Ê½ğÄÚ×ª
+struct CSecurityFtdcFundInterTransferField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///ÓÃ»§´úÂë
+	TSecurityFtdcUserIDType	UserID;
+	///×Ê½ğÕË»§´úÂë
+	TSecurityFtdcAccountIDType	AccountID;
+	///×Ê½ğÕË»§ÃÜÂë
+	TSecurityFtdcPasswordType	Password;
+	///½ğ¶î
+	TSecurityFtdcTradeAmountType	TradeAmount;
+	///ÄÚ×ªÀàĞÍ
+	TSecurityFtdcFundInterTransferTypeType	TransferType;
+	///×Ê½ğÄÚ×ª±àºÅ
+	TSecurityFtdcLiberSerialType	SerialID;
+};
+
+///×Ê½ğÄÚ×ªÁ÷Ë®
+struct CSecurityFtdcFundInterTransferSerialField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+	///ÓÃ»§´úÂë
+	TSecurityFtdcUserIDType	UserID;
+	///×Ê½ğÕË»§´úÂë
+	TSecurityFtdcAccountIDType	AccountID;
+	///×Ê½ğÕË»§ÃÜÂë
+	TSecurityFtdcPasswordType	Password;
+	///½ğ¶î
+	TSecurityFtdcTradeAmountType	TradeAmount;
+	///ÄÚ×ªÀàĞÍ
+	TSecurityFtdcFundInterTransferTypeType	TransferType;
+	///×Ê½ğÄÚ×ª±àºÅ
+	TSecurityFtdcLiberSerialType	SerialID;
+	///×ªÕËÊ±¼ä
+	TSecurityFtdcTimeType	TransferTime;
+	///´íÎó´úÂë
+	TSecurityFtdcErrorIDType	ErrorID;
+	///´íÎóĞÅÏ¢
+	TSecurityFtdcErrorMsgType	ErrorMsg;
+};
+
+///×Ê½ğÄÚ×ªÁ÷Ë®²éÑ¯ÇëÇó
+struct CSecurityFtdcQryFundInterTransferSerialField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///Í¶×ÊÕß´úÂë
+	TSecurityFtdcInvestorIDType	InvestorID;
+};
+
+///»ñÈ¡Êı¾İ¿âĞÅÏ¢
+struct CSecurityFtdcFetchDBInfoField
+{
+	///ÓÃ»§´úÂë
+	TSecurityFtdcUserIDType	UserID;
+	///ÃÜÂë
+	TSecurityFtdcPasswordType	Password;
+	///Êı¾İ¿âË÷Òı
+	TSecurityFtdcUserNameType	DBIndex;
+	///Êı¾İ¿âIPµØÖ·
+	TSecurityFtdcIPAddressType	IPAddress;
+	///Êı¾İ¿âIP¶Ë¿Ú
+	TSecurityFtdcIPPortType	IPPort;
+	///Êı¾İ¿âÃû³Æ
+	TSecurityFtdcUserNameType	DBName;
+	///Êı¾İ¿âÓÃ»§Ãû
+	TSecurityFtdcUserIDType	DBUserID;
+	///Êı¾İ¿âÃÜÂë
+	TSecurityFtdcPasswordType	DBPassword;
+};
+
+///MDÓÃ»§ĞÅÏ¢
+struct CSecurityFtdcMDUserInfoField
+{
+	///¾­¼Í¹«Ë¾´úÂë
+	TSecurityFtdcBrokerIDType	BrokerID;
+	///ÓÃ»§´úÂë
+	TSecurityFtdcUserIDType	UserID;
+	///ÓÃ»§Ãû³Æ
+	TSecurityFtdcUserNameType	UserName;
+	///ÃÜÂë
+	TSecurityFtdcPasswordType	Password;
+	///ĞĞÇéÏµÍ³±àºÅ
+	TSecurityFtdcSequenceNoType	MDSysID;
 };
 
 
